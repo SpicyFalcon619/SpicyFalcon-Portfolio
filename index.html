@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ahmad Maruf Hossain — Portfolio</title>
+<meta name="description" content="Ahmad Maruf Hossain — CSE undergrad, coder, Linux tinkerer, blockchain enthusiast, gamer (SpicyFalcon619)." />
+<style>
+:root{
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #98a0b3;
+  --glass: rgba(255,255,255,0.04);
+  --accent1: #8b5cf6;
+  --accent2: #ec4899;
+  --glass-2: rgba(255,255,255,0.02);
+  --radius: 14px;
+}
+:root.light{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #4b5563;
+  --glass: rgba(10,10,10,0.03);
+  --glass-2: rgba(10,10,10,0.02);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(139,92,246,0.07), transparent 12%),
+              radial-gradient(1000px 500px at 90% 80%, rgba(236,72,153,0.04), transparent 12%),
+              var(--bg);
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  padding:28px;
+  transition: background .45s ease, color .35s ease;
+}
+:root.light body{ color:#0b1220 }
+
+/* ---------- Layout ---------- */
+.wrap{max-width:980px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:sticky;top:12px;backdrop-filter: blur(6px);z-index:20}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.logo{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  display:grid;place-items:center;font-weight:700;color:white;font-size:14px;
+  box-shadow: 0 6px 20px rgba(11,17,32,0.45);
+}
+nav{display:flex;gap:12px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px;border-radius:10px}
+nav a:hover{color:inherit;background:var(--glass);backdrop-filter:blur(6px)}
+.burger{display:none;padding:8px;border-radius:10px;background:var(--glass-2);cursor:pointer}
+.theme-btn{padding:8px;border-radius:10px;background:var(--glass-2);cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin-top:18px}
+.hi{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.8px}
+h1{font-size:36px;margin-top:6px;line-height:1.02}
+h1 .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+p.lead{margin-top:12px;color:var(--muted);max-width:60ch}
+
+/* Avatar */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-radius:var(--radius);
+  padding:18px;border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+.avatar{
+  width:100%;height:320px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:
+  conic-gradient(from 120deg, rgba(139,92,246,0.12), rgba(236,72,153,0.07));
+}
+.avatar svg{width:70%;height:70%;opacity:.98;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.45))}
+
+/* Stats */
+.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+
+/* Sections */
+section{margin-top:26px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.proj{
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .22s ease, box-shadow .22s ease;
+  transform-origin:center center;overflow:hidden;position:relative;
+}
+.proj:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.proj h3{font-size:16px;margin-bottom:6px}
+.proj p{color:var(--muted);font-size:13px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:12px;padding:6px 8px;border-radius:999px;background:var(--glass);color:var(--muted)}
+
+/* Skills */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 12px;background:var(--glass);border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+form{display:flex;flex-direction:column;gap:10px}
+input, textarea{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+button.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px;border-radius:10px;color:white;border:none;font-weight:700;cursor:pointer}
+
+footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px}
+
+/* Project modal */
+#projModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;overflow:auto;padding:30px}
+#projModal .modal-content{background:var(--card);padding:20px;border-radius:14px;max-width:700px;margin:40px auto;position:relative}
+#projModal .close{position:absolute;top:12px;right:16px;font-size:22px;cursor:pointer;color:var(--muted)}
+#projModal h3{margin-bottom:10px}
+#projModal p{margin-bottom:12px;color:var(--muted)}
+#projModal .tags{margin-bottom:10px}
+
+/* Back-to-top button */
+#backTop{position:fixed;bottom:28px;right:28px;background:var(--accent1);color:#fff;padding:12px;border-radius:50%;cursor:pointer;display:none;font-size:18px;z-index:999;box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+
+/* Social sidebar */
+.social-sidebar{position:fixed;top:40%;left:0;display:flex;flex-direction:column;gap:12px;z-index:999}
+.social-sidebar a{background:var(--glass);padding:10px 12px;border-radius:0 12px;color:var(--muted);font-weight:600;text-decoration:none;transition:all .22s}
+.social-sidebar a:hover{background:var(--accent1);color:#fff}
+
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;gap:18px}
+  .avatar{height:260px}
+  nav{display:none}
+  .burger{display:inline-block}
+  .projects{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .social-sidebar{display:none}
+}
+
+/* Glowing effect for link buttons (pills) */
+.pill, #modalLink {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.pill::after, #modalLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0px var(--accent1), 0 0 0px var(--accent2);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.pill:hover::after, #modalLink:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--accent1), 0 0 12px var(--accent2);
+}
+
+.pill:hover, #modalLink:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* keep current color */
+  transition: all 0.25s ease; /* smooth hover transition */
+}
+
+a:hover {
+  color: var(--accent1); /* or whatever accent you like */
+}
+
+.proj {
+  overflow: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: var(--radius);
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+}
+
+.proj-extra {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 10px;
+  transition: all 0.35s ease;
+}
+
+.proj.expanded .proj-extra {
+  max-height: 300px; /* enough to fit content */
+  opacity: 1;
+}
+
+.proj-link {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.proj-link:hover {
+  transform: scale(1.05);
+}
+
+.social-sidebar a svg {
+  vertical-align: middle;
+  fill: var(--muted);
+  transition: fill 0.22s ease, transform 0.22s ease;
+}
+
+.social-sidebar a:hover svg {
+  fill: var(--accent1);
+  transform: scale(1.1);
+}
+
+/* Existing card shadow */
+.card {
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  transition: box-shadow 0.35s ease, transform 0.25s ease;
+}
+
+/* Light mode tweak */
+:root.light .card {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* lighter & softer */
+}
+
+/* Project cards */
+.proj {
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+:root.light .proj {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.proj:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.6);
+}
+
+:root.light .proj:hover {
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="#hero" aria-label="home">
+      <div class="logo">MH</div>
+      <div>
+        <div style="font-weight:800">Ahmad Maruf Hossain</div>
+        <div style="font-size:12px;color:var(--muted)">CSE • United International University</div>
+      </div>
+    </a>
+    <nav aria-label="primary navigation">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌓</button>
+      <button class="burger" id="openMobile" aria-label="open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div id="mobileNav" style="display:none;margin-top:12px;padding:12px;border-radius:12px;background:var(--glass);">
+    <a href="#about" style="display:block;padding:8px 0">About</a>
+    <a href="#projects" style="display:block;padding:8px 0">Projects</a>
+    <a href="#skills" style="display:block;padding:8px 0">Skills</a>
+    <a href="#contact" style="display:block;padding:8px 0">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <main>
+    <section id="hero" class="hero">
+      <div>
+        <div class="hi">Undergrad • CSE • UIU</div>
+        <h1>Ahmad Maruf <span class="accent">Hossain</span></h1>
+        <p class="lead">I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer. Gamer tag: <strong>spicyfalcon619</strong>.</p>
+
+        <div class="mini" style="margin-top:14px">
+          <div class="pill">C • C++ • Java</div>
+          <div class="pill">Arch Linux • Hyprland</div>
+          <div class="pill">Rubik's cube solver</div>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <a class="pill" href="#projects">See Projects →</a>
+          <a class="pill" href="https://github.com/SpicyFalcon619" target="_blank" rel="noreferrer">Github</a>
+          <a class="pill" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="card" aria-hidden="false">
+        <div class="avatar">
+          <img src="/assets/avatar.jpg" alt="Ahmad Maruf Hossain" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
+            <rect width="160" height="160" rx="18" fill="url(#g1)"/>
+            <g transform="translate(30,30)" fill="#fff">
+              <circle cx="50" cy="36" r="26" opacity="0.95"/>
+              <rect x="14" y="72" rx="8" width="72" height="42" opacity="0.95"/>
+            </g>
+          </svg>
+        </div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">SpicyFalcon619</div>
+              <div style="font-size:13px;color:var(--muted)">Valorant: Gold 1</div>
+            </div>
+            <div style="text-align:right;font-size:12px;color:var(--muted)">
+              <div>Award</div>
+              <div style="font-weight:700;color:inherit">Best Emerging Team(Block Chain Category) • UIU CSE FEST 2025</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="pill" href="mailto:hossainmysterio619@gmail.com">Email</a>
+            <a class="pill" href="https://www.instagram.com/spicy_falconn/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="reveal card" style="padding:18px">
+        <h2 style="margin-bottom:8px">About</h2>
+        <p style="color:var(--muted)">I’m a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn — blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+            <h2>Projects</h2>
+            <div style="color:var(--muted);font-size:13px">Click a card to view</div>
+        </div>
+
+        <div class="projects" style="margin-top:12px">
+            <div class="proj" tabindex="0">
+            <h3>Wastopia — Waste to blockchain</h3>
+            <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
+            <div class="tags">
+                <div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div>
+            </div>
+            <div class="proj-extra">
+                <p>Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
+                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+            </div>
+            </div>
+
+            <div class="proj" tabindex="0">
+            <h3>Morse & Vigenère (Java)</h3>
+            <p>Classic cipher implementations used for learning and teaching.</p>
+            <div class="tags">
+                <div class="tag">Java</div><div class="tag">Crypto</div>
+            </div>
+            <div class="proj-extra">
+                <p>Concept proofs (not yet uploaded to GitHub).</p>
+                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+            </div>
+            </div>
+
+            <div class="proj" tabindex="0">
+            <h3>Mini Tools & Notes</h3>
+            <p>Notes on Linux setups, Hyprland config, and small CLI utilities.</p>
+            <div class="tags">
+                <div class="tag">Linux</div><div class="tag">Teaching</div>
+            </div>
+            <div class="proj-extra">
+                <p>Teaching notes for classmates included.</p>
+                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+            </div>
+            </div>
+
+            <div class="proj" tabindex="0">
+            <h3>Game Dev experiments</h3>
+            <p>Small prototypes and experiments exploring game design.</p>
+            <div class="tags">
+                <div class="tag">Game Dev</div><div class="tag">Prototype</div>
+            </div>
+            <div class="proj-extra">
+                <p>Exploring gameplay loops and mechanics.</p>
+                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+    <h2 style="margin-bottom:10px">Skills</h2>
+    <div class="card reveal">
+        <div class="chips">
+        <div class="chip">C</div>
+        <div class="chip">C++</div>
+        <div class="chip">Java</div>
+        <div class="chip">Linux (Arch, Hyprland)</div>
+        <div class="chip">Blockchain Research</div>
+        <div class="chip">HTML/CSS/JS</div>
+        <div class="chip">Problem Solving</div>
+        </div>
+    </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Message" rows="4" required></textarea>
+          <button type="submit" class="primary">Send</button>
+        </form>
+        <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <h3>Get in touch</h3>
+          <p style="color:var(--muted)">Email me at <a href="mailto:hossainmysterio619@gmail.com" style="color:var(--accent1)">hossainmysterio619@gmail.com</a></p>
+          <p style="color:var(--muted)">Follow me on social media or check my GitHub for projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      © 2025 Ahmad Maruf Hossain
+    </footer>
+  </main>
+</div>
+
+<!-- PROJECT MODAL -->
+<div id="projModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div class="tags" id="modalTags"></div>
+    <a id="modalLink" href="#" target="_blank" style="color:var(--accent1);text-decoration:underline;font-weight:600">View Project</a>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<div id="backTop" title="Back to top">↑</div>
+
+<!-- SOCIAL SIDEBAR -->
+<div class="social-sidebar">
+  <a href="https://github.com/SpicyFalcon619" target="_blank" title="GitHub">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.85 10.89.57.11.77-.25.77-.55 0-.27-.01-1.16-.02-2.11-3.19.69-3.87-1.54-3.87-1.54-.52-1.31-1.28-1.66-1.28-1.66-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.97.1-.76.4-1.26.72-1.55-2.55-.29-5.23-1.28-5.23-5.71 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.44.11-3 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.56.23 2.71.12 3 .74.8 1.18 1.82 1.18 3.08 0 4.44-2.69 5.42-5.25 5.7.41.36.77 1.08.77 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.2.66.78.55A10.513 10.513 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/>
+    </svg>
+  </a>
+
+  <a href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" title="LinkedIn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4.98 3.5C3.34 3.5 2 4.84 2 6.48c0 1.63 1.34 2.97 2.98 2.97 1.63 0 2.98-1.34 2.98-2.97 0-1.64-1.34-2.98-2.98-2.98zM2.4 21.5h5.16v-11H2.4v11zM9.56 10.5h4.96v1.49h.07c.69-1.3 2.37-2.68 4.88-2.68 5.23 0 6.2 3.44 6.2 7.92v9.76h-5.16v-8.65c0-2.07-.04-4.73-2.88-4.73-2.88 0-3.32 2.25-3.32 4.57v8.81H9.56v-11z"/>
+    </svg>
+  </a>
+
+  <a href="https://www.instagram.com/spicy_falconn/" target="_blank" title="Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.16c3.21 0 3.59.01 4.85.07 1.17.06 1.98.25 2.44.42.6.23 1.03.51 1.48.97.45.45.74.88.97 1.48.17.46.36 1.27.42 2.44.06 1.26.07 1.64.07 4.85s-.01 3.59-.07 4.85c-.06 1.17-.25 1.98-.42 2.44-.23.6-.51 1.03-.97 1.48-.45.45-.88.74-1.48.97-.46.17-1.27.36-2.44.42-1.26.06-1.64.07-4.85.07s-3.59-.01-4.85-.07c-1.17-.06-1.98-.25-2.44-.42-.6-.23-1.03-.51-1.48-.97-.45-.45-.74-.88-.97-1.48-.17-.46-.36-1.27-.42-2.44C2.17 15.59 2.16 15.21 2.16 12s.01-3.59.07-4.85c.06-1.17.25-1.98.42-2.44.23-.6.51-1.03.97-1.48.45-.45.88-.74 1.48-.97.46-.17 1.27-.36 2.44-.42C8.41 2.17 8.79 2.16 12 2.16zm0-2.16C8.73 0 8.33 0 7.06.07 5.79.13 4.84.31 4.01.57 3.08.87 2.31 1.3 1.57 2.04.83 2.78.39 3.55.09 4.48c-.26.83-.44 1.78-.5 3.05C-.01 8.33 0 8.73 0 12s-.01 3.67.09 4.94c.06 1.27.24 2.22.5 3.05.3.93.74 1.7 1.48 2.44.74.74 1.51 1.18 2.44 1.48.83.26 1.78.44 3.05.5C8.33 23.99 8.73 24 12 24s3.67-.01 4.94-.09c1.27-.06 2.22-.24 3.05-.5.93-.3 1.7-.74 2.44-1.48.74-.74 1.18-1.51 1.48-2.44.26-.83.44-1.78.5-3.05.08-1.27.09-1.67.09-4.94s-.01-3.67-.09-4.94c-.06-1.27-.24-2.22-.5-3.05-.3-.93-.74-1.7-1.48-2.44-.74-.74-1.51-1.18-2.44-1.48-.83-.26-1.78-.44-3.05-.5C15.67.01 15.27 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a3.99 3.99 0 1 1 0-7.98 3.99 3.99 0 0 1 0 7.98zm6.4-11.86a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+// THEME TOGGLE
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.onclick = () => {
+  document.documentElement.classList.toggle('light');
+};
+
+// MOBILE NAV
+const mobileBtn = document.getElementById('openMobile');
+const mobileNav = document.getElementById('mobileNav');
+mobileBtn.onclick = () => mobileNav.style.display = mobileNav.style.display==='block'?'none':'block';
+
+// PROJECT MODAL
+const projCards = document.querySelectorAll('.proj');
+const modal = document.getElementById('projModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalTags = document.getElementById('modalTags');
+const modalLink = document.getElementById('modalLink');
+const closeBtn = modal.querySelector('.close');
+
+projCards.forEach(card => {
+  card.addEventListener('click', () => {
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    modalTags.innerHTML = '';
+    card.dataset.tags.split(',').forEach(t => {
+      const tagDiv = document.createElement('div');
+      tagDiv.className = 'tag';
+      tagDiv.textContent = t.trim();
+      modalTags.appendChild(tagDiv);
+    });
+    modalLink.href = card.dataset.link;
+    modal.style.display = 'block';
+  });
+});
+
+document.querySelectorAll('nav a, #mobileNav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      const offset = 80; // adjust based on header height
+      const topPos = target.offsetTop - offset;
+      window.scrollTo({ top: topPos, behavior: 'smooth' });
+      // close mobile nav if open
+      if(mobileNav.style.display === 'block') mobileNav.style.display = 'none';
+    }
+  });
+});
+
+const projectCards = document.querySelectorAll('.proj');
+projectCards.forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('expanded');
+  });
+});
+
+
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if(e.target==modal) modal.style.display='none'; }
+
+// BACK TO TOP
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  if(window.scrollY>300) backTop.style.display='block';
+  else backTop.style.display='none';
+});
+backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+</script>
+</body>
+</html>
