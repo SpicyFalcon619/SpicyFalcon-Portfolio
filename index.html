@@ -287,7 +287,7 @@ a:hover {
       <div>
         <div class="hi">Undergrad • CSE • UIU</div>
         <h1>Ahmad Maruf <span class="accent">Hossain</span></h1>
-        <p class="lead">I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer. Gamer tag: <strong>spicyfalcon619</strong>.</p>
+        <p class="lead"><span id="typedText"></span></p>
 
         <div class="mini" style="margin-top:14px">
           <div class="pill">C • C++ • Java</div>
@@ -321,7 +321,9 @@ a:hover {
             </div>
             <div style="text-align:right;font-size:12px;color:var(--muted)">
               <div>Award</div>
-              <div style="font-weight:700;color:inherit">Best Emerging Team(Block Chain Category) • UIU CSE FEST 2025</div>
+              <div style="font-weight:700;color:inherit">Best Emerging Team</div>
+              <div style="font-weight:700;color:inherit">Block Chain Category</div>
+              <div style="font-weight:700;color:inherit">UIU CSE FEST 2025</div>
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -487,6 +489,21 @@ themeBtn.onclick = () => {
 const mobileBtn = document.getElementById('openMobile');
 const mobileNav = document.getElementById('mobileNav');
 mobileBtn.onclick = () => mobileNav.style.display = mobileNav.style.display==='block'?'none':'block';
+
+// Typing effect
+const text = "I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer. Gamer tag: spicyfalcon619.";
+const typedEl = document.getElementById('typedText');
+let index = 0;
+
+function typeWriter() {
+  if (index < text.length) {
+    typedEl.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 25); // 25ms per character, adjust for speed
+  }
+}
+
+typeWriter();
 
 // PROJECT MODAL
 const projCards = document.querySelectorAll('.proj');
