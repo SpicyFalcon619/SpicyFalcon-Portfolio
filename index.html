@@ -632,6 +632,17 @@ backTop.addEventListener("click", () => {
 });
 
 backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+
+document.querySelector("form").addEventListener("submit", function(e){
+  e.preventDefault();
+  emailjs.sendForm('service_1iv5ara', 'template_rechy33', this)
+    .then(() => alert('Message sent!'), (err) => alert('Failed to send: ' + err));
+});
+
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("YoxMtX3CP8WSNwVmi");
 </script>
 </body>
 </html>
