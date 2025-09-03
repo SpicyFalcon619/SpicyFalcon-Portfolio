@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ahmad Maruf Hossain — Portfolio</title>
+<meta name="description" content="Ahmad Maruf Hossain — CSE undergrad, coder, Linux tinkerer, blockchain enthusiast, gamer (SpicyFalcon619).">
+<style>
+:root{
+  --bg:#0f1724; --card:#0b1220; --muted:#98a0b3;
+  --glass:rgba(255,255,255,0.04); --accent1:#8b5cf6; --accent2:#ec4899;
+  --radius:14px;
+}
+:root.light{
+  --bg:#f6f7fb; --card:#fff; --muted:#4b5563;
+  --glass:rgba(10,10,10,0.03);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background:radial-gradient(1200px 600px at 10% 10%, rgba(139,92,246,0.07), transparent 12%),
+             radial-gradient(1000px 500px at 90% 80%, rgba(236,72,153,0.04), transparent 12%),
+             var(--bg);
+  color:#e6eef8;
+  line-height:1.45;
+  padding:28px;
+  transition: background .45s ease,color .35s ease;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+:root.light body{color:#0b1220}
+
+.wrap{max-width:980px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:sticky;top:12px;backdrop-filter:blur(6px);z-index:20;background:var(--bg)}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:700;color:white;font-size:14px;box-shadow:0 6px 20px rgba(11,17,32,0.45);}
+nav{display:flex;gap:12px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px;border-radius:10px;transition:background .3s, color .3s}
+nav a:hover{color:inherit;background:var(--glass);backdrop-filter:blur(6px)}
+.burger{display:none;padding:8px;border-radius:10px;background:var(--glass);cursor:pointer}
+.theme-btn{padding:8px;border-radius:10px;background:var(--glass);cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin-top:18px}
+.hi{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.8px}
+h1{font-size:36px;margin-top:6px;line-height:1.02}
+h1 .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+p.lead{margin-top:12px;color:var(--muted);max-width:60ch}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(2,6,23,0.6);transition:transform .25s ease, box-shadow .25s ease}
+.avatar{width:100%;height:320px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:conic-gradient(from 120deg, rgba(139,92,246,0.12), rgba(236,72,153,0.07));transition:transform .3s ease}
+.avatar svg{width:70%;height:70%;opacity:.98;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.45))}
+
+/* Stats */
+.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px;transition:all .3s ease}
+.pill:hover{background:var(--glass);color:#fff}
+
+/* Sections */
+section{margin-top:26px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.proj{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .3s ease, box-shadow .3s ease;transform-origin:center center;position:relative;overflow:hidden}
+.proj:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+.proj h3{font-size:16px;margin-bottom:6px}
+.proj p{color:var(--muted);font-size:13px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:12px;padding:6px 8px;border-radius:999px;background:var(--glass);color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 12px;background:var(--glass);border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,textarea{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+button.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px;border-radius:10px;color:white;border:none;font-weight:700;cursor:pointer}
+footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:20px}
+
+/* Responsive */
+@media(max-width:880px){
+  .hero{grid-template-columns:1fr;gap:18px}
+  .avatar{height:260px}
+  nav{display:none}
+  .burger{display:inline-block}
+  .projects{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+/* Reveal + typing effect */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease, transform .55s ease}
+.reveal.show{opacity:1;transform:none}
+.typing{display:inline-block;overflow:hidden;white-space:nowrap;animation:typing 2.5s steps(40) 1 forwards, blink .7s step-end infinite;}
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-right-color:transparent}}
+.proj .tilt{position:absolute;inset:0;pointer-events:none;transition:transform .22s linear}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="#hero">
+    <div class="logo">MH</div>
+    <div>
+      <div style="font-weight:800">Ahmad Maruf Hossain</div>
+      <div style="font-size:12px;color:var(--muted)">CSE • United International University</div>
+    </div>
+  </a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div style="display:flex;gap:8px;align-items:center">
+    <button class="theme-btn" id="themeToggle">🌓</button>
+    <button class="burger" id="openMobile">☰</button>
+  </div>
+</header>
+
+<div id="mobileNav" style="display:none;margin-top:12px;padding:12px;border-radius:12px;background:var(--glass);">
+  <a href="#about" style="display:block;padding:8px 0">About</a>
+  <a href="#projects" style="display:block;padding:8px 0">Projects</a>
+  <a href="#skills" style="display:block;padding:8px 0">Skills</a>
+  <a href="#contact" style="display:block;padding:8px 0">Contact</a>
+</div>
+
+<main>
+<section id="hero" class="hero">
+  <div>
+    <div class="hi">Undergrad • CSE • UIU</div>
+    <h1>Ahmad Maruf <span class="accent">Hossain</span></h1>
+    <p class="lead"><span class="typing">I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer.</span></p>
+    <div class="mini" style="margin-top:14px">
+      <div class="pill">C • C++ • Java</div>
+      <div class="pill">Arch Linux • Hyprland</div>
+      <div class="pill">Rubik's cube solver</div>
+    </div>
+    <div style="margin-top:14px;display:flex;gap:10px">
+      <a class="pill" href="#projects">See Projects →</a>
+      <a class="pill" href="https://github.com/SpicyFalcon619" target="_blank">Github</a>
+      <a class="pill" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+  <aside class="card" aria-hidden="false">
+    <div class="avatar">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="avatar">
+        <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
+        <rect width="160" height="160" rx="18" fill="url(#g1)"/>
+        <g transform="translate(30,30)" fill="#fff">
+          <circle cx="50" cy="36" r="26" opacity="0.95"/>
+          <rect x="14" y="72" rx="8" width="72" height="42" opacity="0.95"/>
+        </g>
+      </svg>
+    </div>
+    <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-weight:800">SpicyFalcon619</div>
+          <div style="font-size:13px;color:var(--muted)">Valorant: Gold 1</div>
+        </div>
+        <div style="text-align:right;font-size:12px;color:var(--muted)">
+          <div>Award</div>
+          <div style="font-weight:700;color:inherit">UIU CSE FEST 2025</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="pill" href="mailto:hossainmysterio619@gmail.com">Email</a>
+        <a class="pill" href="https://www.instagram.com/spicy_falconn/" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section id="about">
+  <div class="reveal card">
+    <h2>About</h2>
+    <p style="color:var(--muted)">I’m a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn — blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <h2>Projects</h2>
+    <div style="color:var(--muted);font-size:13px">Click a card to view</div>
+  </div>
+  <div class="projects" style="margin-top:12px">
+    <div class="proj reveal" data-link="https://github.com/SpicyFalcon619">
+      <div class="tilt"></div>
+      <h3>Wastopia — Waste to blockchain</h3>
+      <p>Design & research for a blockchain-based waste-tracking & incentive platform. Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
+      <div class="tags"><div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div></div>
+    </div>
+    <div class="proj reveal" data-link="https://github.com/SpicyFalcon619">
+      <div class="tilt"></div>
+      <h3>Morse & Vigenère (Java)</h3>
+      <p>Classic cipher implementations used for learning and teaching — concept proofs (not yet uploaded to GitHub).</p>
+      <div class="tags"><div class="tag">Java</div><div class="tag">Crypto</div></div>
+    </div>
+    <div class="proj reveal" data-link="https://github.com/SpicyFalcon619">
+      <div class="tilt"></div>
+      <h3>Mini Tools & Notes</h3>
+      <p>Notes on Linux setups, Hyprland config, and small CLI utilities. Teaching notes for classmates included.</p>
+      <div class="tags"><div class="tag">Linux</div><div class="tag">Teaching</div></div>
+    </div>
+    <div class="proj reveal" data-link="https://github.com/SpicyFalcon619">
+      <div class="tilt"></div>
+      <h3>Game Dev experiments</h3>
+      <p>Small prototypes and experiments — exploring game design and simple gameplay loops.</p>
+      <div class="tags"><div class="tag">Game Dev</div><div class="tag">Prototype</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="card reveal">
+    <div class="chips">
+      <div class="chip">C</div>
+      <div class="chip">C++</div>
+      <div class="chip">Java</div>
+      <div class="chip">Python (basic)</div>
+      <div class="chip">Git</div>
+      <div class="chip">Linux (Arch)</div>
+      <div class="chip">Frontend (HTML/CSS/JS)</div>
+      <div class="chip">Blockchain (research)</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="contact-grid" style="margin-top:12px">
+    <div class="card reveal">
+      <h3>Let's build something</h3>
+      <p style="color:var(--muted)">Open to collabs, internships, and learning opportunities. Best email: <strong>hossainmysterio619@gmail.com</strong></p>
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <a class="pill" href="mailto:hossainmysterio619@gmail.com">Email me</a>
+        <a class="pill" href="https://github.com/SpicyFalcon619" target="_blank">Github</a>
+        <a class="pill" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <form class="card reveal" id="contactForm">
+      <input id="name" placeholder="Your name" required>
+      <input id="email" placeholder="Your email" required>
+      <textarea id="message" placeholder="Message" rows="4" required></textarea>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="color:var(--muted);font-size:13px">Or email directly if form doesn't work.</div>
+        <button type="submit" class="primary">Send</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="reveal">
+  © <span id="year"></span> Ahmad Maruf Hossain — Built with ✨. GitHub: <a href="https://github.com/SpicyFalcon619" target="_blank">SpicyFalcon619</a>
+</footer>
+</main>
+</div>
+
+<script>
+// Theme toggle
+const root=document.documentElement, themeToggle=document.getElementById('themeToggle');
+if(localStorage.getItem('mh_theme')==='light') root.classList.add('light');
+themeToggle.addEventListener('click',()=>{root.classList.toggle('light');localStorage.setItem('mh_theme',root.classList.contains('light')?'light':'dark');});
+
+// Mobile nav
+const openMobile=document.getElementById('openMobile'), mobileNav=document.getElementById('mobileNav');
+openMobile.addEventListener('click',()=>{mobileNav.style.display=(mobileNav.style.display==='none'||mobileNav.style.display==='')?'block':'none';});
+document.addEventListener('click',e=>{if(window.innerWidth<=880&&!mobileNav.contains(e.target)&&!openMobile.contains(e.target)) mobileNav.style.display='none';});
+
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:0.12});
+reveals.forEach(r=>io.observe(r));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+// Footer year
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Project card tilt
+const projs=document.querySelectorAll('.proj');
+projs.forEach(card=>{
+  const tilt=card.querySelector('.tilt');
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    const x=((e.clientX-rect.left)/rect.width-0.5)*12;
+    const y=((e.clientY-rect.top)/rect.height-0.5)*12;
+    tilt.style.transform=`rotateY(${x}deg) rotateX(${-y}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{tilt.style.transform='rotateY(0) rotateX(0)';});
+  card.addEventListener('click',()=>{window.open(card.dataset.link,'_blank');});
+});
+</script>
+</body>
+</html>
