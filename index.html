@@ -287,8 +287,7 @@ a:hover {
       <div>
         <div class="hi">Undergrad • CSE • UIU</div>
         <h1>Ahmad Maruf <span class="accent">Hossain</span></h1>
-        <p class="lead"><span id="typedText"></span></p>
-
+        <p class="lead"><span id="typedText"></span><strong id="typedBold"></strong></p>
         <div class="mini" style="margin-top:14px">
           <div class="pill">C • C++ • Java</div>
           <div class="pill">Arch Linux • Hyprland</div>
@@ -491,19 +490,38 @@ const mobileNav = document.getElementById('mobileNav');
 mobileBtn.onclick = () => mobileNav.style.display = mobileNav.style.display==='block'?'none':'block';
 
 // Typing effect
-const text = "I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer. Gamer tag: spicyfalcon619.";
+const text = "I tinker with code, Linux, and blockchains. Self-taught coder who loves gaming, problem-solving, and unsolved mysteries. Aiming to become a solid software / AI / Web3 engineer. Gamer tag: ";
+const boldText = "spicyfalcon619";
+
 const typedEl = document.getElementById('typedText');
+const typedBold = document.getElementById('typedBold');
+
 let index = 0;
 
+// Type the main text first
 function typeWriter() {
   if (index < text.length) {
     typedEl.textContent += text.charAt(index);
     index++;
-    setTimeout(typeWriter, 25); // 25ms per character, adjust for speed
+    setTimeout(typeWriter, 25);
+  } else {
+    // After main text, type the bold part
+    typeBold();
+  }
+}
+
+// Type the bold part
+let boldIndex = 0;
+function typeBold() {
+  if (boldIndex < boldText.length) {
+    typedBold.textContent += boldText.charAt(boldIndex);
+    boldIndex++;
+    setTimeout(typeBold, 25);
   }
 }
 
 typeWriter();
+
 
 // PROJECT MODAL
 const projCards = document.querySelectorAll('.proj');
