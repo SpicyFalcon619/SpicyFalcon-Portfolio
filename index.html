@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 <title>Ahmad Maruf Hossain — Portfolio</title>
 <meta name="description" content="Ahmad Maruf Hossain — CSE undergrad, coder, Linux tinkerer, blockchain enthusiast, gamer (SpicyFalcon619)." />
 <style>
@@ -120,7 +120,35 @@ footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;paddi
 #projModal .tags{margin-bottom:10px}
 
 /* Back-to-top button */
-#backTop{position:fixed;bottom:28px;right:28px;background:var(--accent1);color:#fff;padding:12px;border-radius:50%;cursor:pointer;display:none;font-size:18px;z-index:999;box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+#backTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent1);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s ease, background 0.25s ease, opacity 0.3s ease;
+  line-height: 0;
+  text-align: center;
+
+  opacity: 0;          /* hidden by default */
+  visibility: hidden;  /* not clickable */
+}
+
+#backTop.show {
+  opacity: 1;
+  visibility: visible;
+}
 
 /* Social sidebar */
 .social-sidebar{position:fixed;top:40%;left:0;display:flex;flex-direction:column;gap:12px;z-index:999}
@@ -587,11 +615,20 @@ closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = e => { if(e.target==modal) modal.style.display='none'; }
 
 // BACK TO TOP
-const backTop = document.getElementById('backTop');
-window.addEventListener('scroll', () => {
-  if(window.scrollY>300) backTop.style.display='block';
-  else backTop.style.display='none';
+const backTop = document.getElementById("backTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    backTop.classList.add("show");
+  } else {
+    backTop.classList.remove("show");
+  }
 });
+
+backTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
 </script>
 </body>
