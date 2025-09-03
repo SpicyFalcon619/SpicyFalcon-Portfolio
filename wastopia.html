@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Wastopia — Blockchain Waste Management</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<style>
+:root{
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #98a0b3;
+  --glass: rgba(255,255,255,0.04);
+  --accent1: #8b5cf6;
+  --accent2: #ec4899;
+  --glass-2: rgba(255,255,255,0.02);
+  --radius: 14px;
+}
+:root.light{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #4b5563;
+  --glass: rgba(10,10,10,0.03);
+  --glass-2: rgba(10,10,10,0.02);
+}
+
+html { scroll-behavior: smooth; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(139,92,246,0.07), transparent 12%),
+              radial-gradient(1000px 500px at 90% 80%, rgba(236,72,153,0.04), transparent 12%),
+              var(--bg);
+  color:#e6eef8;
+  line-height:1.45;
+  padding:28px;
+  transition: background .45s ease, color .35s ease;
+}
+:root.light body{ color:#0b1220; }
+
+/* ---------- Layout ---------- */
+.wrap{max-width:980px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;position:sticky;top:12px;backdrop-filter: blur(6px);z-index:20}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+.logo{
+  width:52px;height:52px;border-radius:12px;
+  background:transparent;
+  display:grid;place-items:center;font-weight:700;color:white;font-size:14px;
+  box-shadow: 0 6px 20px rgba(11,17,32,0.45);
+}
+nav{display:flex;gap:12px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px;border-radius:10px}
+nav a:hover{color:inherit;background:var(--glass);backdrop-filter:blur(6px)}
+.burger{display:none;padding:8px;border-radius:10px;background:var(--glass-2);cursor:pointer}
+.theme-btn{padding:8px;border-radius:10px;background:var(--glass-2);cursor:pointer}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin-top:18px}
+.hi{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.8px}
+h1{font-size:36px;margin-top:6px;line-height:1.02}
+h1 .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+p.lead{margin-top:12px;color:var(--muted);max-width:60ch}
+
+/* Avatar */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-radius:var(--radius);
+  padding:18px;border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+.avatar{
+  width:100%;height:320px;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:
+  conic-gradient(from 120deg, rgba(139,92,246,0.12), rgba(236,72,153,0.07));
+}
+.avatar svg{width:70%;height:70%;opacity:.98;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.45))}
+
+/* Stats */
+.mini{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pill{background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  text-decoration:none;
+  color:inherit;
+}
+.logo{
+  width:52px; height:52px;
+  border-radius:12px;
+  background:transparent;
+  display:grid;
+  place-items:center;
+  font-weight:700;
+  color:white;
+  font-size:14px;
+  box-shadow:0 6px 20px rgba(11,17,32,0.45);
+}
+nav{ display:flex; gap:12px; align-items:center; }
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px;
+  border-radius:10px;
+}
+nav a:hover{ color:inherit; background:var(--glass); backdrop-filter:blur(6px); }
+
+.theme-btn{
+  width:36px; height:36px;
+  padding:0;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:var(--glass-2);
+  cursor:pointer;
+}
+
+/* Cards */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-radius:var(--radius);
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 10px 30px rgba(2,6,23,0.6);
+  margin-top:18px;
+  transition: box-shadow 0.35s ease, transform 0.25s ease;
+}
+:root.light .card {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+h1{ font-size:32px; margin-bottom:6px; }
+h2{ font-size:22px; margin-bottom:8px; }
+p{ color:var(--muted); margin-top:6px; }
+
+/* Pills (copied from main portfolio) */
+.pill {
+  background: var(--glass);
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+  position: relative;
+  transition: all 0.3s ease;
+  display:inline-block;
+}
+.pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0px var(--accent1), 0 0 0px var(--accent2);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.pill:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 8px var(--accent1), 0 0 12px var(--accent2);
+}
+.pill:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+a.pill { cursor:pointer; text-decoration:none; }
+
+/* Footer */
+footer{ margin-top:34px; color:var(--muted); font-size:13px; text-align:center; padding-bottom:20px; }
+
+/* Lists */
+ul { padding-left:20px; margin-top:12px; color:var(--muted); line-height:1.7; }
+ul li strong { color:#fff; }
+:root.light ul li strong { color:#0b1220; }
+
+a {
+  text-decoration: none;
+  color: inherit; /* keep current color */
+  transition: all 0.25s ease; /* smooth hover transition */
+}
+
+a:hover {
+  color: var(--accent1); /* or whatever accent you like */
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <a class="brand" href="#hero" aria-label="home">
+      <div class="logo">
+        <img src="/assets/my-logo.png" alt="Ahmad Maruf Hossain Logo" style="width:100%; height:100%; object-fit:contain;">
+      </div>
+      <div>
+        <div style="font-weight:800">Ahmad Maruf Hossain</div>
+        <div style="font-size:12px;color:var(--muted)">CSE • United International University</div>
+      </div>
+    </a>
+
+    <div style="display:flex;gap:12px;align-items:center;margin-left:auto">
+      <a href="index.html" class="pill">← Back to Portfolio</a>
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌓</button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <section class="card">
+      <h1>Wastopia</h1>
+      <p>A blockchain and IoT platform for transparent, incentive-driven waste management.</p>
+      <div style="margin-top:12px">
+        <span class="pill">Blockchain</span>
+        <span class="pill">IoT</span>
+        <span class="pill">Research</span>
+        <span class="pill">Sustainability</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Overview</h2>
+      <p>
+        Wastopia is a blockchain and IoT platform that tracks all types of waste — organic, recyclable, and hazardous —
+        ensuring every step is transparent and fraud-proof. Using a hybrid Hyperledger Fabric + Besu architecture, the
+        system combines security with public trust. Smart contracts issue <strong>WastoCoin</strong> tokens to reward
+        proper waste disposal, motivating eco-friendly habits and empowering communities.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Why Wastopia?</h2>
+      <ul>
+        <li><strong>🌍 Global Impact:</strong> Tackles 2.24B tonnes of waste annually, projected 3.88B by 2050.</li>
+        <li><strong>🔗 Transparency:</strong> Hybrid blockchain ensures trust, traceability, and accountability.</li>
+        <li><strong>💰 Incentives:</strong> WastoCoin rewards eco-friendly behavior and responsible disposal.</li>
+        <li><strong>♻️ E-Waste Tracking:</strong> End-to-end accountability for electronic waste.</li>
+        <li><strong>🎓 Education First:</strong> Starts in schools & universities to build sustainable habits.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Key Features</h2>
+      <ul>
+        <li>✅ Immutable waste tracking ledger</li>
+        <li>✅ IoT-enabled SmartBin network</li>
+        <li>✅ Smart contract rewards in real time</li>
+        <li>✅ Blockchain-verified e-waste management</li>
+        <li>✅ Decentralized community governance (DAO)</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Recognition</h2>
+      <p>
+        🏆 <strong>Best Emerging Team — Blockchain Category</strong><br>
+        UIU CSE FEST 2025
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Learn More</h2>
+      <p>Check out the whitepaper for full technical details and impact assessment.</p>
+      <a href="Team Se7en_Whitepaper.pdf" target="_blank" class="pill">📄 View Whitepaper</a>
+      <a href="https://github.com/SpicyFalcon619" target="_blank" class="pill">🔗 GitHub</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Ahmad Maruf Hossain — Wastopia Project
+  </footer>
+</div>
+
+<script>
+// Theme toggle (dark/light)
+const btn = document.getElementById("themeToggle");
+btn.addEventListener("click", () => {
+  document.documentElement.classList.toggle("light");
+});
+</script>
+</body>
+</html>
