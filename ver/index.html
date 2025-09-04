@@ -329,532 +329,13 @@ a:hover {
 :root.light .proj:hover {
   box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
-
-/* Enhanced animations and effects */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-/* Reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal.slide-left {
-  transform: translateX(-50px);
-}
-
-.reveal.slide-left.show {
-  transform: translateX(0);
-}
-
-.reveal.slide-right {
-  transform: translateX(50px);
-}
-
-.reveal.slide-right.show {
-  transform: translateX(0);
-}
-
-/* Enhanced header */
-header {
-  background: rgba(15, 23, 36, 0.8);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 16px;
-  padding: 16px 20px;
-  transition: all 0.3s ease;
-}
-
-:root.light header {
-  background: rgba(246, 247, 251, 0.9);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-/* Enhanced logo with animation */
-.logo {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.logo::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-  transform: rotate(45deg);
-  transition: all 0.6s ease;
-  opacity: 0;
-}
-
-.logo:hover::before {
-  animation: shimmer 1.5s ease-in-out;
-  opacity: 1;
-}
-
-.logo:hover {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Enhanced navigation */
-nav a {
-  position: relative;
-  overflow: hidden;
-}
-
-nav a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  transition: left 0.3s ease;
-}
-
-nav a:hover::before {
-  left: 0;
-}
-
-/* Enhanced theme button */
-.theme-btn {
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.theme-btn:hover {
-  transform: rotate(180deg) scale(1.1);
-  background: var(--accent1);
-  color: white;
-}
-
-/* Enhanced hero section */
-.hero {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.hero > div:first-child {
-  animation: slideInLeft 0.8s ease-out 0.2s both;
-}
-
-.hero > aside {
-  animation: slideInRight 0.8s ease-out 0.4s both;
-}
-
-/* Enhanced avatar with floating effect */
-.avatar {
-  animation: float 6s ease-in-out infinite;
-  position: relative;
-}
-
-.avatar::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 14px;
-  background: linear-gradient(45deg, var(--accent1), var(--accent2), var(--accent1));
-  background-size: 200% 200%;
-  animation: shimmer 3s ease-in-out infinite;
-  z-index: -1;
-  opacity: 0.3;
-}
-
-/* Enhanced typing effect */
-#typedText {
-  position: relative;
-}
-
-#typedText::after {
-  content: '|';
-  animation: blink 1s infinite;
-  color: var(--accent1);
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-#typedBold {
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-}
-
-/* Enhanced pills with magnetic effect */
-.pill {
-  position: relative;
-  overflow: hidden;
-}
-
-.pill::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-  transition: all 0.4s ease;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.pill:hover::before {
-  width: 200px;
-  height: 200px;
-}
-
-/* Enhanced project cards with 3D tilt */
-.proj {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.proj::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.1));
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.proj:hover::before {
-  opacity: 1;
-}
-
-.proj h3 {
-  position: relative;
-  z-index: 2;
-}
-
-.proj p {
-  position: relative;
-  z-index: 2;
-}
-
-.proj .tags {
-  position: relative;
-  z-index: 2;
-}
-
-/* Enhanced tags with stagger animation */
-.tag {
-  transition: all 0.3s ease;
-  transform: translateY(0);
-}
-
-.proj:hover .tag {
-  transform: translateY(-2px);
-  background: var(--accent1);
-  color: white;
-}
-
-.proj:hover .tag:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.proj:hover .tag:nth-child(3) {
-  transition-delay: 0.2s;
-}
-
-/* Enhanced skills chips */
-.chip {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.chip::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.6s ease;
-}
-
-.chip:hover::before {
-  left: 100%;
-}
-
-.chip:hover {
-  transform: translateY(-3px) scale(1.05);
-  background: var(--accent1);
-  color: white;
-}
-
-/* Enhanced form elements */
-input, textarea {
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent1);
-  box-shadow: 0 0 0 3px rgba(139,92,246,0.1);
-  transform: translateY(-2px);
-}
-
-button.primary {
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-button.primary::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255,255,255,0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.4s ease;
-}
-
-button.primary:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-button.primary:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(139,92,246,0.4);
-}
-
-/* Enhanced back to top button */
-#backTop {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(0);
-}
-
-#backTop.show {
-  transform: scale(1);
-}
-
-#backTop:hover {
-  transform: scale(1.1) rotate(360deg);
-  background: var(--accent2);
-}
-
-/* Enhanced social sidebar */
-.social-sidebar a {
-  transform: translateX(-10px);
-  transition: all 0.3s ease;
-}
-
-.social-sidebar a:hover {
-  transform: translateX(0) scale(1.1);
-  box-shadow: 0 5px 15px rgba(139,92,246,0.3);
-}
-
-/* Stagger animation for social links */
-.social-sidebar a:nth-child(1) { animation: slideInLeft 0.6s ease-out 0.8s both; }
-.social-sidebar a:nth-child(2) { animation: slideInLeft 0.6s ease-out 1s both; }
-.social-sidebar a:nth-child(3) { animation: slideInLeft 0.6s ease-out 1.2s both; }
-
-/* Enhanced modal */
-#projModal {
-  backdrop-filter: blur(10px);
-}
-
-#projModal .modal-content {
-  transform: scale(0.8) translateY(50px);
-  opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#projModal.show .modal-content {
-  transform: scale(1) translateY(0);
-  opacity: 1;
-}
-
-/* Parallax background effect */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 20%, rgba(139,92,246,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(236,72,153,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(59,130,246,0.1) 0%, transparent 50%);
-  z-index: -1;
-  animation: float 20s ease-in-out infinite;
-}
-
-/* Enhanced card hover effects */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(2,6,23,0.8);
-}
-
-:root.light .card:hover {
-  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-/* Stagger animations for sections */
-section:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.1s both; }
-section:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.3s both; }
-section:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.5s both; }
-section:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.7s both; }
-section:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.9s both; }
-
-/* Enhanced mini pills */
-.mini .pill {
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-.mini .pill:nth-child(1) { animation-delay: 0.6s; }
-.mini .pill:nth-child(2) { animation-delay: 0.8s; }
-.mini .pill:nth-child(3) { animation-delay: 1s; }
-
-/* Magnetic effect for interactive elements */
-.magnetic {
-  transition: transform 0.2s ease;
-}
-
-/* Enhanced project grid with stagger */
-.projects .proj:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.2s both; }
-.projects .proj:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.4s both; }
-.projects .proj:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.6s both; }
-.projects .proj:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.8s both; }
-
-/* Enhanced skills chips with wave effect */
-.chips .chip:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s both; }
-.chips .chip:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s both; }
-.chips .chip:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s both; }
-.chips .chip:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.4s both; }
-.chips .chip:nth-child(5) { animation: fadeInUp 0.5s ease-out 0.5s both; }
-.chips .chip:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.6s both; }
-.chips .chip:nth-child(7) { animation: fadeInUp 0.5s ease-out 0.7s both; }
-
-/* Loading animation for avatar */
-.avatar img {
-  transition: all 0.3s ease;
-}
-
-.avatar:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1) contrast(1.1);
-}
-
-/* Smooth scroll enhancement */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Enhanced mobile responsiveness */
-@media (max-width: 880px) {
-  .hero {
-    animation: fadeInUp 0.6s ease-out;
-  }
-  
-  .hero > div:first-child {
-    animation: fadeInUp 0.6s ease-out 0.2s both;
-  }
-  
-  .hero > aside {
-    animation: fadeInUp 0.6s ease-out 0.4s both;
-  }
-}
-
-/* Cursor trail effect */
-.cursor-trail {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent1), transparent);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* Enhanced contact form */
-.contact-grid form {
-  animation: slideInLeft 0.8s ease-out 0.2s both;
-}
-
-.contact-grid .card {
-  animation: slideInRight 0.8s ease-out 0.4s both;
-}
 </style>
 </head>
 <body>
-<div class="cursor-trail" id="cursorTrail"></div>
 <div class="wrap">
   <header>
     <a class="brand" href="#hero" aria-label="home">
-      <div class="logo magnetic">
+      <div class="logo">
         <img src="/assets/my-logo.png" alt="Ahmad Maruf Hossain Logo" style="width:100%; height:100%; object-fit:contain;">
       </div>
       <div>
@@ -869,7 +350,7 @@ html {
       <a href="#contact">Contact</a>
     </nav>
     <div style="display:flex;gap:8px;align-items:center">
-      <button class="theme-btn magnetic" id="themeToggle" title="Toggle theme">🌓</button>
+      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌓</button>
       <button class="burger" id="openMobile" aria-label="open menu">☰</button>
     </div>
   </header>
@@ -896,9 +377,9 @@ html {
         </div>
 
         <div style="margin-top:14px;display:flex;gap:10px">
-          <a class="pill magnetic" href="#projects">See Projects →</a>
-          <a class="pill magnetic" href="https://github.com/SpicyFalcon619" target="_blank" rel="noreferrer">Github</a>
-          <a class="pill magnetic" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill" href="#projects">See Projects →</a>
+          <a class="pill" href="https://github.com/SpicyFalcon619" target="_blank" rel="noreferrer">Github</a>
+          <a class="pill" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
 
@@ -927,15 +408,15 @@ html {
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <a class="pill magnetic" href="mailto:hossainmysterio619@gmail.com">Email</a>
-            <a class="pill magnetic" href="https://www.instagram.com/spicy_falconn/" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="pill" href="mailto:hossainmysterio619@gmail.com">Email</a>
+            <a class="pill" href="https://www.instagram.com/spicy_falconn/" target="_blank" rel="noreferrer">Instagram</a>
           </div>
         </div>
       </aside>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="reveal">
+    <section id="about">
       <div class="reveal card" style="padding:18px">
         <h2 style="margin-bottom:8px">About</h2>
         <p style="color:var(--muted)">I’m a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn, blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
@@ -943,14 +424,14 @@ html {
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="reveal">
+    <section id="projects">
         <div style="display:flex;align-items:center;justify-content:space-between">
             <h2>Projects</h2>
             <div style="color:var(--muted);font-size:13px">Click a card to view</div>
         </div>
 
         <div class="projects" style="margin-top:12px">
-            <div class="proj magnetic" tabindex="0">
+            <div class="proj" tabindex="0">
             <h3>Wastopia — Waste to blockchain</h3>
             <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
             <div class="tags">
@@ -962,7 +443,7 @@ html {
             </div>
             </div>
 
-            <div class="proj magnetic" tabindex="0">
+            <div class="proj" tabindex="0">
             <h3>Morse & Vigenère (Java)</h3>
             <p>Classic cipher implementations used for learning and teaching.</p>
             <div class="tags">
@@ -974,7 +455,7 @@ html {
             </div>
             </div>
 
-            <div class="proj magnetic" tabindex="0">
+            <div class="proj" tabindex="0">
             <h3>Mini Tools & Notes</h3>
             <p>Notes on Linux setups, Hyprland config, and small CLI utilities.</p>
             <div class="tags">
@@ -986,7 +467,7 @@ html {
             </div>
             </div>
 
-            <div class="proj magnetic" tabindex="0">
+            <div class="proj" tabindex="0">
             <h3>Game Dev experiments</h3>
             <p>Small prototypes and experiments exploring game design.</p>
             <div class="tags">
@@ -1002,31 +483,31 @@ html {
 
 
     <!-- SKILLS -->
-    <section id="skills" class="reveal">
+    <section id="skills">
     <h2 style="margin-bottom:10px">Skills</h2>
     <div class="card reveal">
         <div class="chips">
-        <div class="chip magnetic">C</div>
-        <div class="chip magnetic">C++</div>
-        <div class="chip magnetic">Java</div>
-        <div class="chip magnetic">Linux (Arch, Hyprland)</div>
-        <div class="chip magnetic">Blockchain Research</div>
-        <div class="chip magnetic">HTML/CSS/JS</div>
-        <div class="chip magnetic">Problem Solving</div>
+        <div class="pill">C</div>
+        <div class="pill">C++</div>
+        <div class="pill">Java</div>
+        <div class="pill">Linux (Arch, Hyprland)</div>
+        <div class="pill">Blockchain Research</div>
+        <div class="pill">HTML/CSS/JS</div>
+        <div class="pill">Problem Solving</div>
         </div>
     </div>
     </section>
 
 
     <!-- CONTACT -->
-    <section id="contact" class="reveal">
+    <section id="contact">
       <h2>Contact</h2>
       <div class="contact-grid">
         <form action="https://formspree.io/f/myzdbzdy" method="POST">
           <input type="text" name="name" placeholder="Name" required />
           <input type="email" name="email" placeholder="Email" required />
           <textarea name="message" placeholder="Message" rows="4" required></textarea>
-          <button type="submit" class="primary magnetic">Send</button>
+          <button type="submit" class="primary">Send</button>
         </form>
         <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
           <h3>Get in touch</h3>
@@ -1146,7 +627,6 @@ projCards.forEach(card => {
     });
     modalLink.href = card.dataset.link;
     modal.style.display = 'block';
-    setTimeout(() => modal.classList.add('show'), 10);
   });
 });
 
@@ -1172,16 +652,8 @@ projectCards.forEach(card => {
 });
 
 
-closeBtn.onclick = () => {
-  modal.classList.remove('show');
-  setTimeout(() => modal.style.display = 'none', 300);
-};
-window.onclick = e => { 
-  if(e.target==modal) {
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
-  }
-}
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if(e.target==modal) modal.style.display='none'; }
 
 // BACK TO TOP
 const backTop = document.getElementById("backTop");
@@ -1199,92 +671,6 @@ backTop.addEventListener("click", () => {
 });
 
 backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
-
-// Enhanced scroll reveal
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Magnetic effect for interactive elements
-document.querySelectorAll('.magnetic').forEach(el => {
-  el.addEventListener('mousemove', (e) => {
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    const moveX = x * 0.1;
-    const moveY = y * 0.1;
-    
-    el.style.transform = `translate(${moveX}px, ${moveY}px)`;
-  });
-  
-  el.addEventListener('mouseleave', () => {
-    el.style.transform = 'translate(0, 0)';
-  });
-});
-
-// Cursor trail effect
-const cursorTrail = document.getElementById('cursorTrail');
-let mouseX = 0, mouseY = 0;
-let trailX = 0, trailY = 0;
-
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function animateTrail() {
-  trailX += (mouseX - trailX) * 0.1;
-  trailY += (mouseY - trailY) * 0.1;
-  
-  cursorTrail.style.left = trailX - 10 + 'px';
-  cursorTrail.style.top = trailY - 10 + 'px';
-  cursorTrail.style.opacity = '0.6';
-  
-  requestAnimationFrame(animateTrail);
-}
-
-animateTrail();
-
-// Enhanced project card interactions
-document.querySelectorAll('.proj').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transform = 'translateY(-8px) scale(1.02)';
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(0) scale(1)';
-  });
-});
-
-// Parallax effect for background
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const parallax = document.body;
-  const speed = scrolled * 0.5;
-  
-  parallax.style.backgroundPosition = `center ${speed}px`;
-});
-
-// Enhanced theme transition
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  setTimeout(() => {
-    document.body.style.transition = 'background .45s ease, color .35s ease';
-  }, 500);
-});
 </script>
 
 </body>
