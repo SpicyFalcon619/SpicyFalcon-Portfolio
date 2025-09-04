@@ -46,7 +46,6 @@
 }
 </script>
 
-
 <style>
 :root{
   --bg: #0f1724;
@@ -181,9 +180,8 @@ footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;paddi
   transition: transform 0.25s ease, background 0.25s ease, opacity 0.3s ease;
   line-height: 0;
   text-align: center;
-
-  opacity: 0;          /* hidden by default */
-  visibility: hidden;  /* not clickable */
+  opacity: 0;
+  visibility: hidden;
 }
 
 #backTop.show {
@@ -243,12 +241,12 @@ footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;paddi
 
 a {
   text-decoration: none;
-  color: inherit; /* keep current color */
-  transition: all 0.25s ease; /* smooth hover transition */
+  color: inherit;
+  transition: all 0.25s ease;
 }
 
 a:hover {
-  color: var(--accent1); /* or whatever accent you like */
+  color: var(--accent1);
 }
 
 .proj {
@@ -266,10 +264,11 @@ a:hover {
   opacity: 0;
   margin-top: 10px;
   transition: all 0.35s ease;
+  overflow: hidden;
 }
 
 .proj.expanded .proj-extra {
-  max-height: 300px; /* enough to fit content */
+  max-height: 300px;
   opacity: 1;
 }
 
@@ -279,14 +278,19 @@ a:hover {
   padding: 6px 12px;
   border-radius: 8px;
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  color: white;
+  color: white !important;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .proj-link:hover {
   transform: scale(1.05);
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.4);
 }
 
 .social-sidebar a svg {
@@ -308,7 +312,7 @@ a:hover {
 
 /* Light mode tweak */
 :root.light .card {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* lighter & softer */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 /* Project cards */
@@ -905,13 +909,6 @@ html {
       <aside class="card" aria-hidden="false">
         <div class="avatar">
           <img src="/assets/avatar.jpg" alt="Ahmad Maruf Hossain" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
-            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
-            <rect width="160" height="160" rx="18" fill="url(#g1)"/>
-            <g transform="translate(30,30)" fill="#fff">
-              <circle cx="50" cy="36" r="26" opacity="0.95"/>
-              <rect x="14" y="72" rx="8" width="72" height="42" opacity="0.95"/>
-            </g>
-          </svg>
         </div>
         <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;justify-content:space-between;align-items:center">
@@ -938,7 +935,7 @@ html {
     <section id="about" class="reveal">
       <div class="reveal card" style="padding:18px">
         <h2 style="margin-bottom:8px">About</h2>
-        <p style="color:var(--muted)">I’m a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn, blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
+        <p style="color:var(--muted)">I'm a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn, blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
       </div>
     </section>
 
@@ -946,60 +943,59 @@ html {
     <section id="projects" class="reveal">
         <div style="display:flex;align-items:center;justify-content:space-between">
             <h2>Projects</h2>
-            <div style="color:var(--muted);font-size:13px">Click a card to view</div>
+            <div style="color:var(--muted);font-size:13px">Click a card to expand</div>
         </div>
 
         <div class="projects" style="margin-top:12px">
             <div class="proj magnetic" tabindex="0">
-            <h3>Wastopia — Waste to blockchain</h3>
-            <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
-            <div class="tags">
-                <div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div>
-            </div>
-            <div class="proj-extra">
-                <p>Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
-                <a href="wastopia.html" class="proj-link">View Project</a>
-            </div>
-            </div>
-
-            <div class="proj magnetic" tabindex="0">
-            <h3>Morse & Vigenère (Java)</h3>
-            <p>Classic cipher implementations used for learning and teaching.</p>
-            <div class="tags">
-                <div class="tag">Java</div><div class="tag">Crypto</div>
-            </div>
-            <div class="proj-extra">
-                <p>Concept proofs (not yet uploaded to GitHub).</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+                <h3>Wastopia — Waste to blockchain</h3>
+                <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
+                <div class="tags">
+                    <div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
+                    <a href="wastopia.html" class="proj-link">View Project</a>
+                </div>
             </div>
 
             <div class="proj magnetic" tabindex="0">
-            <h3>Mini Tools & Notes</h3>
-            <p>Notes on Linux setups, Hyprland config, and small CLI utilities.</p>
-            <div class="tags">
-                <div class="tag">Linux</div><div class="tag">Teaching</div>
-            </div>
-            <div class="proj-extra">
-                <p>Teaching notes for classmates included.</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+                <h3>Morse & Vigenère (Java)</h3>
+                <p>Classic cipher implementations used for learning and teaching.</p>
+                <div class="tags">
+                    <div class="tag">Java</div><div class="tag">Crypto</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Concept proofs (not yet uploaded to GitHub).</p>
+                    <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+                </div>
             </div>
 
             <div class="proj magnetic" tabindex="0">
-            <h3>Game Dev experiments</h3>
-            <p>Small prototypes and experiments exploring game design.</p>
-            <div class="tags">
-                <div class="tag">Game Dev</div><div class="tag">Prototype</div>
+                <h3>Mini Tools & Notes</h3>
+                <p>Notes on Linux setups, Hyprland config, and small CLI utilities.</p>
+                <div class="tags">
+                    <div class="tag">Linux</div><div class="tag">Teaching</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Teaching notes for classmates included.</p>
+                    <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+                </div>
             </div>
-            <div class="proj-extra">
-                <p>Exploring gameplay loops and mechanics.</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+
+            <div class="proj magnetic" tabindex="0">
+                <h3>Game Dev experiments</h3>
+                <p>Small prototypes and experiments exploring game design.</p>
+                <div class="tags">
+                    <div class="tag">Game Dev</div><div class="tag">Prototype</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Exploring gameplay loops and mechanics.</p>
+                    <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+                </div>
             </div>
         </div>
     </section>
-
 
     <!-- SKILLS -->
     <section id="skills" class="reveal">
@@ -1016,7 +1012,6 @@ html {
         </div>
     </div>
     </section>
-
 
     <!-- CONTACT -->
     <section id="contact" class="reveal">
@@ -1041,17 +1036,6 @@ html {
       © 2025 Ahmad Maruf Hossain
     </footer>
   </main>
-</div>
-
-<!-- PROJECT MODAL -->
-<div id="projModal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-    <div class="tags" id="modalTags"></div>
-    <a id="modalLink" href="#" target="_blank" style="color:var(--accent1);text-decoration:underline;font-weight:600">View Project</a>
-  </div>
 </div>
 
 <!-- BACK TO TOP -->
@@ -1123,65 +1107,54 @@ function typeBold() {
 
 typeWriter();
 
-
-// PROJECT MODAL
-const projCards = document.querySelectorAll('.proj');
-const modal = document.getElementById('projModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalTags = document.getElementById('modalTags');
-const modalLink = document.getElementById('modalLink');
-const closeBtn = modal.querySelector('.close');
-
-projCards.forEach(card => {
-  card.addEventListener('click', () => {
-    modalTitle.textContent = card.dataset.title;
-    modalDesc.textContent = card.dataset.desc;
-    modalTags.innerHTML = '';
-    card.dataset.tags.split(',').forEach(t => {
-      const tagDiv = document.createElement('div');
-      tagDiv.className = 'tag';
-      tagDiv.textContent = t.trim();
-      modalTags.appendChild(tagDiv);
-    });
-    modalLink.href = card.dataset.link;
-    modal.style.display = 'block';
-    setTimeout(() => modal.classList.add('show'), 10);
-  });
-});
-
+// NAVIGATION SMOOTH SCROLL
 document.querySelectorAll('nav a, #mobileNav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
     if (target) {
-      const offset = 80; // adjust based on header height
+      const offset = 80;
       const topPos = target.offsetTop - offset;
       window.scrollTo({ top: topPos, behavior: 'smooth' });
-      // close mobile nav if open
       if(mobileNav.style.display === 'block') mobileNav.style.display = 'none';
     }
   });
 });
 
-const projectCards = document.querySelectorAll('.proj');
-projectCards.forEach(card => {
-  card.addEventListener('click', () => {
+// PROJECT CARDS - FIXED EVENT HANDLING
+document.querySelectorAll('.proj').forEach(card => {
+  // Handle card expansion (only when NOT clicking on links)
+  card.addEventListener('click', (e) => {
+    // Check if the click target is a link or inside a link
+    if (e.target.tagName === 'A' || e.target.closest('a') || e.target.classList.contains('proj-link')) {
+      return; // Don't expand card, let link handle the click
+    }
+    
+    // Toggle card expansion
     card.classList.toggle('expanded');
   });
 });
 
-
-closeBtn.onclick = () => {
-  modal.classList.remove('show');
-  setTimeout(() => modal.style.display = 'none', 300);
-};
-window.onclick = e => { 
-  if(e.target==modal) {
-    modal.classList.remove('show');
-    setTimeout(() => modal.style.display = 'none', 300);
-  }
-}
+// PROJECT LINKS - DEDICATED CLICK HANDLERS
+document.querySelectorAll('.proj-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent card expansion
+    e.preventDefault(); // Prevent default link behavior
+    
+    const href = link.getAttribute('href');
+    if (href) {
+      if (href.startsWith('http')) {
+        window.open(href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = href;
+      }
+    }
+  });
+  
+  // Ensure links are always on top
+  link.style.position = 'relative';
+  link.style.zIndex = '1000';
+});
 
 // BACK TO TOP
 const backTop = document.getElementById("backTop");
@@ -1197,8 +1170,6 @@ window.addEventListener("scroll", () => {
 backTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
-backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
 
 // Enhanced scroll reveal
 const observerOptions = {
@@ -1256,17 +1227,6 @@ function animateTrail() {
 }
 
 animateTrail();
-
-// Enhanced project card interactions
-document.querySelectorAll('.proj').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transform = 'translateY(-8px) scale(1.02)';
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(0) scale(1)';
-  });
-});
 
 // Parallax effect for background
 window.addEventListener('scroll', () => {
