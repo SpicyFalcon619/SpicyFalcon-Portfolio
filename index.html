@@ -523,10 +523,13 @@ nav a:hover::before {
   position: relative;
 }
 
-#typedText::after {
+#typedBold::after {
   content: '|';
   animation: blink 1s infinite;
   color: var(--accent1);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
 
 @keyframes blink {
