@@ -769,10 +769,12 @@ body::before {
 
 /* Stagger animations for sections */
 section:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.1s both; }
-section:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.3s both; }
-section:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.5s both; }
-section:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.7s both; }
-section:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.9s both; }
+section:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.2s both; }
+section:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.3s both; }
+section:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.4s both; }
+section:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.5s both; }
+section:nth-child(6) { animation: fadeInUp 0.8s ease-out 0.6s both; }
+section:nth-child(7) { animation: fadeInUp 0.8s ease-out 0.7s both; }
 
 /* Enhanced mini pills */
 .mini .pill {
@@ -803,6 +805,120 @@ section:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.9s both; }
 .chips .chip:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.6s both; }
 .chips .chip:nth-child(7) { animation: fadeInUp 0.5s ease-out 0.7s both; }
 
+/* Education Section Styles */
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.education-item {
+  transition: all 0.3s ease;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.education-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Timeline Styles */
+.timeline-container {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent1), var(--accent2));
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -39px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent1);
+  border-radius: 50%;
+  border: 3px solid var(--card);
+  box-shadow: 0 0 0 2px var(--accent1);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(139,92,246,0.3);
+}
+
+.timeline-date {
+  color: var(--accent1);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.timeline-content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Enhanced Skills Section */
+.skills-category {
+  margin-bottom: 20px;
+}
+
+.skills-category:last-child {
+  margin-bottom: 0;
+}
+
+.skills-category h3 {
+  position: relative;
+  display: inline-block;
+}
+
+.skills-category h3::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border-radius: 1px;
+}
+
 /* Loading animation for avatar */
 .avatar img {
   transition: all 0.3s ease;
@@ -820,6 +936,27 @@ html {
 
 /* Enhanced mobile responsiveness */
 @media (max-width: 880px) {
+  .education-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .education-header > div:last-child {
+    text-align: left;
+  }
+  
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item {
+    padding-left: 16px;
+  }
+  
+  .timeline-dot {
+    left: -29px;
+  }
+  
   .hero {
     animation: fadeInUp 0.6s ease-out;
   }
@@ -871,6 +1008,8 @@ html {
     </a>
     <nav aria-label="primary navigation">
       <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#timeline">Timeline</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -884,6 +1023,8 @@ html {
   <!-- MOBILE NAV -->
   <div id="mobileNav" style="display:none;margin-top:12px;padding:12px;border-radius:12px;background:var(--glass);">
     <a href="#about" style="display:block;padding:8px 0">About</a>
+    <a href="#education" style="display:block;padding:8px 0">Education</a>
+    <a href="#timeline" style="display:block;padding:8px 0">Timeline</a>
     <a href="#projects" style="display:block;padding:8px 0">Projects</a>
     <a href="#skills" style="display:block;padding:8px 0">Skills</a>
     <a href="#contact" style="display:block;padding:8px 0">Contact</a>
@@ -898,8 +1039,8 @@ html {
         <p class="lead"><span id="typedText"></span><strong id="typedBold"></strong></p>
         <div class="mini" style="margin-top:14px">
           <div class="pill">C • C++ • Java</div>
-          <div class="pill">Arch Linux • Hyprland</div>
-          <div class="pill">Rubik's cube solver</div>
+          <div class="pill">Linux Enthusiast</div>
+          <div class="pill">Esports Player</div>
         </div>
 
         <div style="margin-top:14px;display:flex;gap:10px">
@@ -938,7 +1079,99 @@ html {
     <section id="about" class="reveal">
       <div class="reveal card" style="padding:18px">
         <h2 style="margin-bottom:8px">About</h2>
-        <p style="color:var(--muted)">I'm a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn, blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
+        <p style="color:var(--muted)">I'm a passionate CSE undergrad at United International University, currently in my 2nd year. My journey in tech started with curiosity about how things work under the hood, leading me to explore system-level programming, blockchain technology, and software development.</p>
+        <p style="color:var(--muted);margin-top:8px">When I'm not coding, you'll find me competing in esports (Valorant Gold 1), solving Rubik's cubes, or tinkering with my Arch Linux setup. I believe in learning by building, which is why I work on projects like Wastopia and various cipher implementations to deepen my understanding of technology.</p>
+        <p style="color:var(--muted);margin-top:8px">My goal is to become a well-rounded software engineer with expertise in AI, Web3, and system architecture. I'm always eager to learn new technologies and collaborate on interesting projects.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <h2 style="margin-bottom:12px">Education</h2>
+      <div class="education-timeline">
+        <div class="education-item card reveal slide-left">
+          <div class="education-header">
+            <div>
+              <h3 style="margin-bottom:4px">Bachelor of Science in Computer Science & Engineering</h3>
+              <div style="color:var(--accent1);font-weight:600;font-size:14px">United International University</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div>June 2024 - Present</div>
+              <div style="font-weight:600;color:inherit">2nd Year</div>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Currently pursuing my undergraduate degree in Computer Science & Engineering. Focusing on core CS fundamentals, programming languages, and emerging technologies like blockchain and AI.</p>
+          <div style="margin-top:10px">
+            <span class="pill">Data Structures</span>
+            <span class="pill">Algorithms</span>
+            <span class="pill">OOP</span>
+            <span class="pill">Database Systems</span>
+          </div>
+        </div>
+        
+        <div class="education-item card reveal slide-right">
+          <div class="education-header">
+            <div>
+              <h3 style="margin-bottom:4px">Higher Secondary Certificate (HSC)</h3>
+              <div style="color:var(--accent1);font-weight:600;font-size:14px">Sena Public School & College</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div>2022 - 2023</div>
+              <div style="font-weight:600;color:inherit">Science Group</div>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Completed higher secondary education with focus on Science group. Built strong foundation in Mathematics, Physics, and Chemistry that supports my current CS studies.</p>
+          <div style="margin-top:10px">
+            <span class="pill">Mathematics</span>
+            <span class="pill">Physics</span>
+            <span class="pill">Chemistry</span>
+            <span class="pill">ICT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="reveal">
+      <h2 style="margin-bottom:12px">My Journey</h2>
+      <div class="timeline-container card" style="padding:24px">
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">January 2025</div>
+              <h4>UIU CSE FEST 2025 Winner</h4>
+              <p>Won "Best Emerging Team" in Blockchain Category with Wastopia project</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2024</div>
+              <h4>Started University Journey</h4>
+              <p>Began CSE at United International University, diving deep into programming and computer science fundamentals</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023</div>
+              <h4>Completed HSC</h4>
+              <p>Graduated from Sena Public School & College with Science background</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2022</div>
+              <h4>Started Higher Secondary</h4>
+              <p>Began HSC journey at Sena Public School & College, building foundation in sciences</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1004,14 +1237,30 @@ html {
     <section id="skills" class="reveal">
     <h2 style="margin-bottom:10px">Skills</h2>
     <div class="card reveal">
+        <h3 style="margin-bottom:12px;font-size:16px">Programming Languages</h3>
         <div class="chips">
         <div class="chip magnetic">C</div>
         <div class="chip magnetic">C++</div>
         <div class="chip magnetic">Java</div>
-        <div class="chip magnetic">Linux (Arch, Hyprland)</div>
-        <div class="chip magnetic">Blockchain Research</div>
         <div class="chip magnetic">HTML/CSS/JS</div>
+        <div class="chip magnetic">Python (Basic)</div>
+        </div>
+        
+        <h3 style="margin:16px 0 12px 0;font-size:16px">Technologies & Tools</h3>
+        <div class="chips">
+        <div class="chip magnetic">Linux (Arch)</div>
+        <div class="chip magnetic">Hyprland</div>
+        <div class="chip magnetic">Git</div>
+        <div class="chip magnetic">Blockchain</div>
+        <div class="chip magnetic">IoT Concepts</div>
+        </div>
+        
+        <h3 style="margin:16px 0 12px 0;font-size:16px">Soft Skills</h3>
+        <div class="chips">
         <div class="chip magnetic">Problem Solving</div>
+        <div class="chip magnetic">Research</div>
+        <div class="chip magnetic">Team Collaboration</div>
+        <div class="chip magnetic">Quick Learning</div>
         </div>
     </div>
     </section>
