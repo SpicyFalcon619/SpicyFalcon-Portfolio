@@ -156,6 +156,7 @@ nav a:hover{color:inherit;background:var(--glass);backdrop-filter:blur(6px)}
 /* Hero */
 .hero{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:center;margin-top:18px}
 .hi{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:1.8px}
+h1{font-size:36px;margin-top:6px;line-height:1.02}
 h1 .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
 p.lead{margin-top:12px;color:var(--muted);max-width:60ch}
 
@@ -315,7 +316,7 @@ a:hover {
   max-height: 0;
   opacity: 0;
   margin-top: 10px;
-  transition: all 0.3s ease; /* Faster */
+  transition: all 0.35s ease;
   overflow: hidden;
 }
 
@@ -347,22 +348,19 @@ a:hover {
 
 .social-sidebar a svg {
   vertical-align: middle;
-  color: var(--muted); /* Changed from fill to color for theme consistency */
-  fill: currentColor; /* Ensures SVG picks up inherited color */
-  transition: color 0.22s ease, transform 0.22s ease;
+  fill: var(--muted);
+  transition: fill 0.22s ease, transform 0.22s ease;
 }
 
 .social-sidebar a:hover svg {
-  color: var(--accent1);
+  fill: var(--accent1);
   transform: scale(1.1);
 }
 
 /* Existing card shadow */
 .card {
   box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); /* Faster */
-  position: relative;
-  overflow: hidden;
+  transition: box-shadow 0.35s ease, transform 0.25s ease;
 }
 
 /* Light mode tweak */
@@ -373,7 +371,7 @@ a:hover {
 /* Project cards */
 .proj {
   box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Faster */
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 :root.light .proj {
@@ -438,11 +436,6 @@ a:hover {
   100% { background-position: 200% 0; }
 }
 
-/* Added expandWidth keyframe from wastopia.html */
-@keyframes expandWidth {
-  to { width: 100%; }
-}
-
 /* Reveal animations */
 .reveal {
   opacity: 0;
@@ -501,13 +494,13 @@ header {
   height: 200%;
   background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
   transform: rotate(45deg);
-  transition: all 0.4s ease; /* Faster */
+  transition: all 0.6s ease;
   opacity: 0;
   pointer-events: none;
 }
 
 .logo:hover::before {
-  animation: shimmer 1s ease-in-out forwards; /* Faster */
+  animation: shimmer 1.5s ease-in-out forwards; /* Use forwards to keep the end state */
   opacity: 1;
 }
 
@@ -589,26 +582,6 @@ nav a:hover::after {
 .hero > div > div:last-child a:nth-child(3) { animation: fadeInUp 0.6s ease-out 1.2s both; }
 
 
-/* Adjusted h1 styles for text-only underline */
-h1{
-  font-size:36px; margin-top:6px; line-height:1.02;
-  animation: slideInLeft 0.8s ease-out 0.2s both;
-  position: relative;
-  display: inline-block; /* Crucial for ::after to follow text width */
-  width: fit-content;    /* Also helps restrict width */
-}
-h1::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  animation: expandWidth 1.5s ease-out 1s both;
-}
-
-
 /* Enhanced avatar with floating effect */
 .avatar {
   animation: float 6s ease-in-out infinite;
@@ -669,7 +642,7 @@ h1::after {
   width: 0;
   height: 0;
   background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-  transition: all 0.3s ease; /* Faster */
+  transition: all 0.4s ease;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -684,7 +657,7 @@ h1::after {
 .proj {
   transform-style: preserve-3d;
   perspective: 1000px;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Faster */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 .proj::before {
@@ -694,7 +667,7 @@ h1::after {
   background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.1));
   border-radius: inherit;
   opacity: 0;
-  transition: opacity 0.2s ease; /* Faster */
+  transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
@@ -768,7 +741,7 @@ h1::after {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.4s ease; /* Faster */
+  transition: left 0.6s ease;
   pointer-events: none;
 }
 
@@ -778,7 +751,7 @@ h1::after {
 
 .chip:hover {
   transform: translateY(-3px) scale(1.05);
-  background: linear-gradient(9deg, var(--accent1), var(--accent2));
+  background: linear-gradient(9 deg, var(--accent1), var(--accent2));
   color: white;
   box-shadow: 0 5px 15px rgba(139,92,246,0.3);
 }
@@ -813,7 +786,7 @@ button.primary::before {
   background: rgba(255,255,255,0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: all 0.3s ease; /* Faster */
+  transition: all 0.4s ease;
   pointer-events: none;
 }
 
@@ -981,9 +954,9 @@ section:nth-child(7) { animation: fadeInUp 0.8s ease-out 0.7s both; }
   width: 12px;
   height: 12px;
   background: var(--accent1);
+  border-radius: 50%;
   border: 3px solid var(--card);
   box-shadow: 0 0 0 2px var(--accent1);
-  border-radius: 50%;
   transition: all 0.3s ease;
 }
 
@@ -1099,8 +1072,7 @@ html {
   pointer-events: none;
   z-index: 9999;
   opacity: 0;
-  /* Removed transform transition here, JS controls directly */
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.1s linear;
 }
 
 /* Enhanced contact form */
@@ -1112,48 +1084,12 @@ html {
   animation: slideInRight 0.8s ease-out 0.4s both;
 }
 
-/* Section titles animation (H2) and card hover effect */
+/* Section titles animation */
 h2 {
-  position: relative;
-  display: inline-block;
-}
-
-/* Initial state for h2 within reveal containers */
-.reveal h2 {
+    display: inline-block;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Add transition for show */
-}
-/* Final state when parent is visible */
-.reveal.show h2 {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* Vertical bar for H2 headings on card hover */
-h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -10px; /* Position to the left of the text */
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, var(--accent1), var(--accent2));
-  border-radius: 2px;
-  transform: scaleY(0); /* Start hidden */
-  transition: transform 0.3s ease; /* Faster */
-  transform-origin: bottom;
-}
-
-.card:hover h2::before {
-  transform: scaleY(1); /* Expand on card hover */
-}
-
-
-/* Added footer animation from wastopia.html */
-footer {
-  animation: fadeInUp 0.8s ease-out 1.3s both;
+    animation: fadeInUp 0.6s forwards;
 }
 </style>
 </head>
@@ -1242,7 +1178,7 @@ footer {
 
     <!-- ABOUT -->
     <section id="about" class="reveal">
-      <div class="card" style="padding:18px">
+      <div class="reveal card" style="padding:18px">
         <h2 style="margin-bottom:8px">About</h2>
         <p style="color:var(--muted)">I'm a passionate CSE undergrad at United International University, currently in my 2nd year. My journey in tech started with curiosity about how things work under the hood, leading me to explore system-level programming, blockchain technology, and software development.</p>
         <p style="color:var(--muted);margin-top:8px">When I'm not coding, you'll find me competing in esports, solving Rubik's cubes, or tinkering with my Arch Linux with Hyprland setup. I believe in learning by building, which is why I work on projects like Wastopia and various cipher implementations to deepen my understanding of technology.</p>
@@ -1343,7 +1279,7 @@ footer {
     <!-- PROJECTS -->
     <section id="projects" class="reveal">
         <div style="display:flex;align-items:center;justify-content:space-between">
-            <h2 style="margin-bottom:8px;">Projects</h2>
+            <h2>Projects</h2>
             <div style="color:var(--muted);font-size:13px">Click a card to expand</div>
         </div>
 
@@ -1401,7 +1337,7 @@ footer {
     <!-- SKILLS -->
     <section id="skills" class="reveal">
     <h2 style="margin-bottom:10px">Skills</h2>
-    <div class="card" style="padding:18px">
+    <div class="card reveal">
         <h3 style="margin-bottom:12px;font-size:16px">Programming Languages</h3>
         <div class="chips">
         <div class="chip magnetic">C</div>
@@ -1485,10 +1421,6 @@ footer {
 const themeBtn = document.getElementById('themeToggle');
 themeBtn.onclick = () => {
   document.documentElement.classList.toggle('light');
-  document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-  setTimeout(() => {
-    document.body.style.transition = 'background .45s ease, color .35s ease';
-  }, 500);
 };
 
 // MOBILE NAV
@@ -1510,7 +1442,7 @@ function typeWriter() {
   if (index < text.length) {
     typedEl.textContent += text.charAt(index);
     index++;
-    setTimeout(typeWriter, 20); // Faster typing effect
+    setTimeout(typeWriter, 25);
   } else {
     // After main text, type the bold part
     typeBold();
@@ -1523,7 +1455,7 @@ function typeBold() {
   if (boldIndex < boldText.length) {
     typedBold.textContent += boldText.charAt(boldIndex);
     boldIndex++;
-    setTimeout(typeBold, 20); // Faster typing effect
+    setTimeout(typeBold, 25);
   }
 }
 
@@ -1645,8 +1577,8 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateTrail() {
-  trailX += (mouseX - trailX) * 0.3; // Faster smoothing factor
-  trailY += (mouseY - trailY) * 0.3;
+  trailX += (mouseX - trailX) * 0.2; // Increased smoothing factor
+  trailY += (mouseY - trailY) * 0.2;
   
   cursorTrail.style.transform = `translate(${trailX - 10}px, ${trailY - 10}px)`;
   
