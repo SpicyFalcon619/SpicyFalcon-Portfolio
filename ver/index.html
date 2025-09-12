@@ -46,7 +46,6 @@
 }
 </script>
 
-
 <style>
 :root{
   --bg: #0f1724;
@@ -181,9 +180,8 @@ footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;paddi
   transition: transform 0.25s ease, background 0.25s ease, opacity 0.3s ease;
   line-height: 0;
   text-align: center;
-
-  opacity: 0;          /* hidden by default */
-  visibility: hidden;  /* not clickable */
+  opacity: 0;
+  visibility: hidden;
 }
 
 #backTop.show {
@@ -243,12 +241,12 @@ footer{margin-top:34px;color:var(--muted);font-size:13px;text-align:center;paddi
 
 a {
   text-decoration: none;
-  color: inherit; /* keep current color */
-  transition: all 0.25s ease; /* smooth hover transition */
+  color: inherit;
+  transition: all 0.25s ease;
 }
 
 a:hover {
-  color: var(--accent1); /* or whatever accent you like */
+  color: var(--accent1);
 }
 
 .proj {
@@ -266,10 +264,11 @@ a:hover {
   opacity: 0;
   margin-top: 10px;
   transition: all 0.35s ease;
+  overflow: hidden;
 }
 
 .proj.expanded .proj-extra {
-  max-height: 300px; /* enough to fit content */
+  max-height: 300px;
   opacity: 1;
 }
 
@@ -279,14 +278,19 @@ a:hover {
   padding: 6px 12px;
   border-radius: 8px;
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  color: white;
+  color: white !important;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .proj-link:hover {
   transform: scale(1.05);
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(139,92,246,0.4);
 }
 
 .social-sidebar a svg {
@@ -308,7 +312,7 @@ a:hover {
 
 /* Light mode tweak */
 :root.light .card {
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* lighter & softer */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
 /* Project cards */
@@ -329,13 +333,672 @@ a:hover {
 :root.light .proj:hover {
   box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
+
+/* Enhanced animations and effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.slide-left {
+  transform: translateX(-50px);
+}
+
+.reveal.slide-left.show {
+  transform: translateX(0);
+}
+
+.reveal.slide-right {
+  transform: translateX(50px);
+}
+
+.reveal.slide-right.show {
+  transform: translateX(0);
+}
+
+/* Enhanced header */
+header {
+  background: rgba(15, 23, 36, 0.8);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+}
+
+:root.light header {
+  background: rgba(246, 247, 251, 0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Enhanced logo with animation */
+.logo {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.logo:hover::before {
+  animation: shimmer 1.5s ease-in-out;
+  opacity: 1;
+}
+
+.logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Enhanced navigation */
+nav a {
+  position: relative;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: left 0.3s ease;
+}
+
+nav a:hover::before {
+  left: 0;
+}
+
+/* Enhanced theme button */
+.theme-btn {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.theme-btn:hover {
+  transform: rotate(180deg) scale(1.1);
+  background: var(--accent1);
+  color: white;
+}
+
+/* Enhanced hero section */
+.hero {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero > div:first-child {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+.hero > aside {
+  animation: slideInRight 0.8s ease-out 0.4s both;
+}
+
+/* Enhanced avatar with floating effect */
+.avatar {
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+}
+
+.avatar::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, var(--accent1), var(--accent2), var(--accent1));
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Enhanced typing effect */
+#typedText {
+  position: relative;
+}
+
+#typedBold::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: var(--accent1);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+#typedBold {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+/* Enhanced pills with magnetic effect */
+.pill {
+  position: relative;
+  overflow: hidden;
+}
+
+.pill::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  transition: all 0.4s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pill:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+/* Enhanced project cards with 3D tilt */
+.proj {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.proj::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.1));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.proj:hover::before {
+  opacity: 1;
+}
+
+.proj h3 {
+  position: relative;
+  z-index: 2;
+}
+
+.proj p {
+  position: relative;
+  z-index: 2;
+}
+
+.proj .tags {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced tags with stagger animation */
+.tag {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.proj:hover .tag {
+  transform: translateY(-2px);
+  background: var(--accent1);
+  color: white;
+}
+
+.proj:hover .tag:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.proj:hover .tag:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+/* Enhanced skills chips */
+.chip {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.chip:hover::before {
+  left: 100%;
+}
+
+.chip:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: var(--accent1);
+  color: white;
+}
+
+/* Enhanced form elements */
+input, textarea {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent1);
+  box-shadow: 0 0 0 3px rgba(139,92,246,0.1);
+  transform: translateY(-2px);
+}
+
+button.primary {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button.primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+}
+
+button.primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button.primary:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(139,92,246,0.4);
+}
+
+/* Enhanced back to top button */
+#backTop {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(0);
+}
+
+#backTop.show {
+  transform: scale(1);
+}
+
+#backTop:hover {
+  transform: scale(1.1) rotate(360deg);
+  background: var(--accent2);
+}
+
+/* Enhanced social sidebar */
+.social-sidebar a {
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.social-sidebar a:hover {
+  transform: translateX(0) scale(1.1);
+  box-shadow: 0 5px 15px rgba(139,92,246,0.3);
+}
+
+/* Stagger animation for social links */
+.social-sidebar a:nth-child(1) { animation: slideInLeft 0.6s ease-out 0.8s both; }
+.social-sidebar a:nth-child(2) { animation: slideInLeft 0.6s ease-out 1s both; }
+.social-sidebar a:nth-child(3) { animation: slideInLeft 0.6s ease-out 1.2s both; }
+
+/* Enhanced modal */
+#projModal {
+  backdrop-filter: blur(10px);
+}
+
+#projModal .modal-content {
+  transform: scale(0.8) translateY(50px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#projModal.show .modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Parallax background effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(139,92,246,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236,72,153,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(59,130,246,0.1) 0%, transparent 50%);
+  z-index: -1;
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Enhanced card hover effects */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(2,6,23,0.8);
+}
+
+:root.light .card:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Stagger animations for sections */
+section:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.1s both; }
+section:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.2s both; }
+section:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.3s both; }
+section:nth-child(4) { animation: fadeInUp 0.8s ease-out 0.4s both; }
+section:nth-child(5) { animation: fadeInUp 0.8s ease-out 0.5s both; }
+section:nth-child(6) { animation: fadeInUp 0.8s ease-out 0.6s both; }
+section:nth-child(7) { animation: fadeInUp 0.8s ease-out 0.7s both; }
+
+/* Enhanced mini pills */
+.mini .pill {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.mini .pill:nth-child(1) { animation-delay: 0.6s; }
+.mini .pill:nth-child(2) { animation-delay: 0.8s; }
+.mini .pill:nth-child(3) { animation-delay: 1s; }
+
+/* Magnetic effect for interactive elements */
+.magnetic {
+  transition: transform 0.2s ease;
+}
+
+/* Enhanced project grid with stagger */
+.projects .proj:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.2s both; }
+.projects .proj:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.4s both; }
+.projects .proj:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.6s both; }
+.projects .proj:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.8s both; }
+
+/* Enhanced skills chips with wave effect */
+.chips .chip:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s both; }
+.chips .chip:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s both; }
+.chips .chip:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s both; }
+.chips .chip:nth-child(4) { animation: fadeInUp 0.5s ease-out 0.4s both; }
+.chips .chip:nth-child(5) { animation: fadeInUp 0.5s ease-out 0.5s both; }
+.chips .chip:nth-child(6) { animation: fadeInUp 0.5s ease-out 0.6s both; }
+.chips .chip:nth-child(7) { animation: fadeInUp 0.5s ease-out 0.7s both; }
+
+/* Education Section Styles */
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.education-item {
+  transition: all 0.3s ease;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.education-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Timeline Styles */
+.timeline-container {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent1), var(--accent2));
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -39px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent1);
+  border-radius: 50%;
+  border: 3px solid var(--card);
+  box-shadow: 0 0 0 2px var(--accent1);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(139,92,246,0.3);
+}
+
+.timeline-date {
+  color: var(--accent1);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.timeline-content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Enhanced Skills Section */
+.skills-category {
+  margin-bottom: 20px;
+}
+
+.skills-category:last-child {
+  margin-bottom: 0;
+}
+
+.skills-category h3 {
+  position: relative;
+  display: inline-block;
+}
+
+.skills-category h3::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  border-radius: 1px;
+}
+
+/* Loading animation for avatar */
+.avatar img {
+  transition: all 0.3s ease;
+}
+
+.avatar:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Smooth scroll enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 880px) {
+  .education-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .education-header > div:last-child {
+    text-align: left;
+  }
+  
+  .timeline {
+    padding-left: 20px;
+  }
+  
+  .timeline-item {
+    padding-left: 16px;
+  }
+  
+  .timeline-dot {
+    left: -29px;
+  }
+  
+  .hero {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  .hero > div:first-child {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+  }
+  
+  .hero > aside {
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+  }
+}
+
+/* Cursor trail effect */
+.cursor-traila {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent1), transparent);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Enhanced contact form */
+.contact-grid form {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+.contact-grid .card {
+  animation: slideInRight 0.8s ease-out 0.4s both;
+}
 </style>
 </head>
 <body>
+<div class="cursor-trail" id="cursorTrail"></div>
 <div class="wrap">
   <header>
     <a class="brand" href="#hero" aria-label="home">
-      <div class="logo">
+      <div class="logo magnetic">
         <img src="/assets/my-logo.png" alt="Ahmad Maruf Hossain Logo" style="width:100%; height:100%; object-fit:contain;">
       </div>
       <div>
@@ -345,12 +1008,14 @@ a:hover {
     </a>
     <nav aria-label="primary navigation">
       <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#timeline">Timeline</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
     <div style="display:flex;gap:8px;align-items:center">
-      <button class="theme-btn" id="themeToggle" title="Toggle theme">🌓</button>
+      <button class="theme-btn magnetic" id="themeToggle" title="Toggle theme">🌓</button>
       <button class="burger" id="openMobile" aria-label="open menu">☰</button>
     </div>
   </header>
@@ -358,6 +1023,8 @@ a:hover {
   <!-- MOBILE NAV -->
   <div id="mobileNav" style="display:none;margin-top:12px;padding:12px;border-radius:12px;background:var(--glass);">
     <a href="#about" style="display:block;padding:8px 0">About</a>
+    <a href="#education" style="display:block;padding:8px 0">Education</a>
+    <a href="#timeline" style="display:block;padding:8px 0">Timeline</a>
     <a href="#projects" style="display:block;padding:8px 0">Projects</a>
     <a href="#skills" style="display:block;padding:8px 0">Skills</a>
     <a href="#contact" style="display:block;padding:8px 0">Contact</a>
@@ -372,27 +1039,20 @@ a:hover {
         <p class="lead"><span id="typedText"></span><strong id="typedBold"></strong></p>
         <div class="mini" style="margin-top:14px">
           <div class="pill">C • C++ • Java</div>
-          <div class="pill">Arch Linux • Hyprland</div>
-          <div class="pill">Rubik's cube solver</div>
+          <div class="pill">Linux Enthusiast</div>
+          <div class="pill">Esports Player</div>
         </div>
 
         <div style="margin-top:14px;display:flex;gap:10px">
-          <a class="pill" href="#projects">See Projects →</a>
-          <a class="pill" href="https://github.com/SpicyFalcon619" target="_blank" rel="noreferrer">Github</a>
-          <a class="pill" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="pill magnetic" href="#projects">See Projects →</a>
+          <a class="pill magnetic" href="https://github.com/SpicyFalcon619" target="_blank" rel="noreferrer">Github</a>
+          <a class="pill magnetic" href="https://www.linkedin.com/in/ahmad-maruf-hossain/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
 
       <aside class="card" aria-hidden="false">
         <div class="avatar">
           <img src="/assets/avatar.jpg" alt="Ahmad Maruf Hossain" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
-            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
-            <rect width="160" height="160" rx="18" fill="url(#g1)"/>
-            <g transform="translate(30,30)" fill="#fff">
-              <circle cx="50" cy="36" r="26" opacity="0.95"/>
-              <rect x="14" y="72" rx="8" width="72" height="42" opacity="0.95"/>
-            </g>
-          </svg>
         </div>
         <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;justify-content:space-between;align-items:center">
@@ -408,110 +1068,217 @@ a:hover {
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <a class="pill" href="mailto:a.marufhossain619@gmail.com">Email</a>
-            <a class="pill" href="https://www.instagram.com/spicy_falconn/" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="pill magnetic" href="mailto:a.marufhossain619@gmail.com">Email</a>
+            <a class="pill magnetic" href="https://www.instagram.com/spicy_falconn/" target="_blank" rel="noreferrer">Instagram</a>
           </div>
         </div>
       </aside>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
+    <section id="about" class="reveal">
       <div class="reveal card" style="padding:18px">
         <h2 style="margin-bottom:8px">About</h2>
-        <p style="color:var(--muted)">I’m a 2nd-year CSE undergrad at United International University. I enjoy system-level tinkering (Arch Linux & Hyprland), frontend experiments, and problem-solving. I build small projects to learn, blockchain research (Wastopia), cipher demos in Java (Morse, Vigenère), and more.</p>
+        <p style="color:var(--muted)">I'm a passionate CSE undergrad at United International University, currently in my 2nd year. My journey in tech started with curiosity about how things work under the hood, leading me to explore system-level programming, blockchain technology, and software development.</p>
+        <p style="color:var(--muted);margin-top:8px">When I'm not coding, you'll find me competing in esports, solving Rubik's cubes, or tinkering with my Arch Linux with Hyprland setup. I believe in learning by building, which is why I work on projects like Wastopia and various cipher implementations to deepen my understanding of technology.</p>
+        <p style="color:var(--muted);margin-top:8px">My goal is to become a well-rounded software engineer with expertise in AI, Web3, and system architecture. I'm always eager to learn new technologies and collaborate on interesting projects.</p>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <h2 style="margin-bottom:12px">Education</h2>
+      <div class="education-timeline">
+        <div class="education-item card reveal slide-left">
+          <div class="education-header">
+            <div>
+              <h3 style="margin-bottom:4px">Bachelor of Science in Computer Science & Engineering</h3>
+              <div style="color:var(--accent1);font-weight:600;font-size:14px">United International University</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div>June 2024 - Present</div>
+              <div style="font-weight:600;color:inherit">2nd Year</div>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Currently pursuing my undergraduate degree in Computer Science & Engineering. Focusing on core CS fundamentals, programming languages, and emerging technologies like blockchain and AI.</p>
+          <div style="margin-top:10px">
+            <span class="pill">Data Structures</span>
+            <span class="pill">Algorithms</span>
+            <span class="pill">OOP</span>
+            <span class="pill">Database Systems</span>
+          </div>
+        </div>
+        
+        <div class="education-item card reveal slide-right">
+          <div class="education-header">
+            <div>
+              <h3 style="margin-bottom:4px">Higher Secondary Certificate (HSC)</h3>
+              <div style="color:var(--accent1);font-weight:600;font-size:14px">Sena Public School & College</div>
+            </div>
+            <div style="text-align:right;color:var(--muted);font-size:13px">
+              <div>2022 - 2023</div>
+              <div style="font-weight:600;color:inherit">Science Group</div>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:8px">Completed higher secondary education with focus on Science group. Built strong foundation in Mathematics, Physics, and Chemistry that supports my current CS studies.</p>
+          <div style="margin-top:10px">
+            <span class="pill">Mathematics</span>
+            <span class="pill">Physics</span>
+            <span class="pill">Chemistry</span>
+            <span class="pill">ICT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="reveal">
+      <h2 style="margin-bottom:12px">My Journey</h2>
+      <div class="timeline-container card" style="padding:24px">
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">January 2025</div>
+              <h4>UIU CSE FEST 2025 Winner</h4>
+              <p>Won "Best Emerging Team" in Blockchain Category with Wastopia project</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2024</div>
+              <h4>Started University Journey</h4>
+              <p>Began CSE at United International University, diving deep into programming and computer science fundamentals</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023</div>
+              <h4>Completed HSC</h4>
+              <p>Graduated from Sena Public School & College with Science background</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2022</div>
+              <h4>Started Higher Secondary</h4>
+              <p>Began HSC journey at Sena Public School & College, building foundation in sciences</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
+    <section id="projects" class="reveal">
         <div style="display:flex;align-items:center;justify-content:space-between">
             <h2>Projects</h2>
-            <div style="color:var(--muted);font-size:13px">Click a card to view</div>
+            <div style="color:var(--muted);font-size:13px">Click a card to expand</div>
         </div>
 
         <div class="projects" style="margin-top:12px">
-            <div class="proj" tabindex="0">
-            <h3>Wastopia — Waste to blockchain</h3>
-            <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
-            <div class="tags">
-                <div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div>
-            </div>
-            <div class="proj-extra">
-                <p>Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
-                <a href="/wastopia.html" class="proj-link">View Project</a>
-            </div>
-            </div>
-
-            <div class="proj" tabindex="0">
-            <h3>Morse & Vigenère (Java)</h3>
-            <p>Classic cipher implementations used for learning and teaching.</p>
-            <div class="tags">
-                <div class="tag">Java</div><div class="tag">Crypto</div>
-            </div>
-            <div class="proj-extra">
-                <p>Concept proofs (not yet uploaded to GitHub).</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+            <div class="proj magnetic" tabindex="0">
+                <h3>Wastopia - Waste to blockchain</h3>
+                <p>Design & research for a blockchain-based waste-tracking & incentive platform.</p>
+                <div class="tags">
+                    <div class="tag">Blockchain</div><div class="tag">Research</div><div class="tag">IoT (planned)</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Won Emerging Team (Blockchain) at UIU CSE FEST 2025.</p>
+                    <a href="wastopia.html" class="proj-link">View Project</a>
+                </div>
             </div>
 
-            <div class="proj" tabindex="0">
-            <h3>Mini Tools & Notes</h3>
-            <p>Notes on Linux setups, Hyprland config, and small CLI utilities.</p>
-            <div class="tags">
-                <div class="tag">Linux</div><div class="tag">Teaching</div>
-            </div>
-            <div class="proj-extra">
-                <p>Teaching notes for classmates included.</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+            <div class="proj magnetic" tabindex="0">
+                <h3>Morse Code Translator (Java)</h3>
+                <p>Classic Morse code translator for learning and teaching Java.</p>
+                <div class="tags">
+                    <div class="tag">Java</div><div class="tag">Crypto</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Console and GUI implementations available.</p>
+                    <a href="https://spicy-morse-code-java.vercel.app/" target="_blank" class="proj-link">View Project</a>
+                </div>
             </div>
 
-            <div class="proj" tabindex="0">
-            <h3>Game Dev experiments</h3>
-            <p>Small prototypes and experiments exploring game design.</p>
-            <div class="tags">
-                <div class="tag">Game Dev</div><div class="tag">Prototype</div>
+            <div class="proj magnetic" tabindex="0">
+                <h3>OOP Notes (Notion)</h3>
+                <p>Teaching notes prepared for classmates, including small utilities, references, and concepts explained in a simple and structured way.</p>
+                <div class="tags">
+                    <div class="tag">Teaching</div><div class="tag">Notion</div>
+                </div>
+                <div class="proj-extra">
+                    <p>OOP (Java) notes created for classmates, available on Notion.</p>
+                    <a href="https://bold-ocelot-ae1.notion.site/Theory-1d9b38bc56448124b6fce299b5459c4e" target="_blank" class="proj-link">View Notes</a>
+                </div>
             </div>
-            <div class="proj-extra">
-                <p>Exploring gameplay loops and mechanics.</p>
-                <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
-            </div>
+
+            <div class="proj magnetic" tabindex="0">
+                <h3>Game Dev experiments</h3>
+                <p>Small prototypes and experiments exploring game design.</p>
+                <div class="tags">
+                    <div class="tag">Game Dev</div><div class="tag">Prototype</div>
+                </div>
+                <div class="proj-extra">
+                    <p>Exploring gameplay loops and mechanics.</p>
+                    <a href="https://github.com/SpicyFalcon619" target="_blank" class="proj-link">View Project</a>
+                </div>
             </div>
         </div>
     </section>
 
-
     <!-- SKILLS -->
-    <section id="skills">
+    <section id="skills" class="reveal">
     <h2 style="margin-bottom:10px">Skills</h2>
     <div class="card reveal">
+        <h3 style="margin-bottom:12px;font-size:16px">Programming Languages</h3>
         <div class="chips">
-        <div class="pill">C</div>
-        <div class="pill">C++</div>
-        <div class="pill">Java</div>
-        <div class="pill">Linux (Arch, Hyprland)</div>
-        <div class="pill">Blockchain Research</div>
-        <div class="pill">HTML/CSS/JS</div>
-        <div class="pill">Problem Solving</div>
+        <div class="chip magnetic">C</div>
+        <div class="chip magnetic">C++</div>
+        <div class="chip magnetic">Java</div>
+        <div class="chip magnetic">HTML/CSS/JS</div>
+        <div class="chip magnetic">Python (Basic)</div>
+        </div>
+        
+        <h3 style="margin:16px 0 12px 0;font-size:16px">Technologies & Tools</h3>
+        <div class="chips">
+        <div class="chip magnetic">Linux (Arch)</div>
+        <div class="chip magnetic">Hyprland</div>
+        <div class="chip magnetic">Git</div>
+        <div class="chip magnetic">Notion</div>
+        <div class="chip magnetic">Blockchain</div>
+        <div class="chip magnetic">IoT Concepts</div>
+        </div>
+        
+        <h3 style="margin:16px 0 12px 0;font-size:16px">Soft Skills</h3>
+        <div class="chips">
+        <div class="chip magnetic">Problem Solving</div>
+        <div class="chip magnetic">Research</div>
+        <div class="chip magnetic">Team Collaboration</div>
+        <div class="chip magnetic">Quick Learning</div>
         </div>
     </div>
     </section>
 
-
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" class="reveal">
       <h2>Contact</h2>
       <div class="contact-grid">
         <form action="https://formspree.io/f/myzdbzdy" method="POST">
           <input type="text" name="name" placeholder="Name" required />
           <input type="email" name="email" placeholder="Email" required />
           <textarea name="message" placeholder="Message" rows="4" required></textarea>
-          <button type="submit" class="primary">Send</button>
+          <button type="submit" class="primary magnetic">Send</button>
         </form>
         <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
           <h3>Get in touch</h3>
-          <p style="color:var(--muted)">Email me at <a href="mailto:hossainmysterio619@gmail.com" style="color:var(--accent1)">hossainmysterio619@gmail.com</a></p>
+          <p style="color:var(--muted)">Email me at <a href="mailto:a.marufhossain619@gmail.com" style="color:var(--accent1)">a.marufhossain619@gmail.com</a></p>
           <p style="color:var(--muted)">Follow me on social media or check my GitHub for projects.</p>
         </div>
       </div>
@@ -522,17 +1289,6 @@ a:hover {
       © 2025 Ahmad Maruf Hossain
     </footer>
   </main>
-</div>
-
-<!-- PROJECT MODAL -->
-<div id="projModal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3 id="modalTitle"></h3>
-    <p id="modalDesc"></p>
-    <div class="tags" id="modalTags"></div>
-    <a id="modalLink" href="#" target="_blank" style="color:var(--accent1);text-decoration:underline;font-weight:600">View Project</a>
-  </div>
 </div>
 
 <!-- BACK TO TOP -->
@@ -604,56 +1360,54 @@ function typeBold() {
 
 typeWriter();
 
-
-// PROJECT MODAL
-const projCards = document.querySelectorAll('.proj');
-const modal = document.getElementById('projModal');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalTags = document.getElementById('modalTags');
-const modalLink = document.getElementById('modalLink');
-const closeBtn = modal.querySelector('.close');
-
-projCards.forEach(card => {
-  card.addEventListener('click', () => {
-    modalTitle.textContent = card.dataset.title;
-    modalDesc.textContent = card.dataset.desc;
-    modalTags.innerHTML = '';
-    card.dataset.tags.split(',').forEach(t => {
-      const tagDiv = document.createElement('div');
-      tagDiv.className = 'tag';
-      tagDiv.textContent = t.trim();
-      modalTags.appendChild(tagDiv);
-    });
-    modalLink.href = card.dataset.link;
-    modal.style.display = 'block';
-  });
-});
-
+// NAVIGATION SMOOTH SCROLL
 document.querySelectorAll('nav a, #mobileNav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(link.getAttribute('href'));
     if (target) {
-      const offset = 80; // adjust based on header height
+      const offset = 80;
       const topPos = target.offsetTop - offset;
       window.scrollTo({ top: topPos, behavior: 'smooth' });
-      // close mobile nav if open
       if(mobileNav.style.display === 'block') mobileNav.style.display = 'none';
     }
   });
 });
 
-const projectCards = document.querySelectorAll('.proj');
-projectCards.forEach(card => {
-  card.addEventListener('click', () => {
+// PROJECT CARDS - FIXED EVENT HANDLING
+document.querySelectorAll('.proj').forEach(card => {
+  // Handle card expansion (only when NOT clicking on links)
+  card.addEventListener('click', (e) => {
+    // Check if the click target is a link or inside a link
+    if (e.target.tagName === 'A' || e.target.closest('a') || e.target.classList.contains('proj-link')) {
+      return; // Don't expand card, let link handle the click
+    }
+    
+    // Toggle card expansion
     card.classList.toggle('expanded');
   });
 });
 
-
-closeBtn.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if(e.target==modal) modal.style.display='none'; }
+// PROJECT LINKS - DEDICATED CLICK HANDLERS
+document.querySelectorAll('.proj-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent card expansion
+    e.preventDefault(); // Prevent default link behavior
+    
+    const href = link.getAttribute('href');
+    if (href) {
+      if (href.startsWith('http')) {
+        window.open(href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = href;
+      }
+    }
+  });
+  
+  // Ensure links are always on top
+  link.style.position = 'relative';
+  link.style.zIndex = '1000';
+});
 
 // BACK TO TOP
 const backTop = document.getElementById("backTop");
@@ -670,7 +1424,80 @@ backTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-backTop.onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+// Enhanced scroll reveal
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Magnetic effect for interactive elements
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    const moveX = x * 0.1;
+    const moveY = y * 0.1;
+    
+    el.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  });
+  
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'translate(0, 0)';
+  });
+});
+
+// Cursor trail effect
+const cursorTrail = document.getElementById('cursorTrail');
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateTrail() {
+  trailX += (mouseX - trailX) * 0.1;
+  trailY += (mouseY - trailY) * 0.1;
+  
+  cursorTrail.style.left = trailX - 10 + 'px';
+  cursorTrail.style.top = trailY - 10 + 'px';
+  cursorTrail.style.opacity = '0.6';
+  
+  requestAnimationFrame(animateTrail);
+}
+
+animateTrail();
+
+// Parallax effect for background
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const parallax = document.body;
+  const speed = scrolled * 0.5;
+  
+  parallax.style.backgroundPosition = `center ${speed}px`;
+});
+
+// Enhanced theme transition
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+  setTimeout(() => {
+    document.body.style.transition = 'background .45s ease, color .35s ease';
+  }, 500);
+});
 </script>
 
 </body>
